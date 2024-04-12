@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start:server": "node server/index.js",
+    "start:": "node server/index.js",
     "server": "nodemon server",
     "start": "ng serve",
     "build": "ng build",
