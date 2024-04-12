@@ -36,7 +36,7 @@ export class SignupComponent implements OnInit {
     let newPassword = control.root.get('newPassword');
     return newPassword && control.value !== newPassword.value?
     {
-      passwordMatch:true
+      passwordMatch:true,
     }
     : null;
   }
