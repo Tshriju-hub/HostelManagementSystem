@@ -67,6 +67,16 @@
                                     <input class="form-control" type="email" name="email" formControlName="email" placeholder="E-mail Address" required>
                                 </div>
                                 <div class="col-md-12 text-right" *ngIf="email!==null && email.invalid"><small style="color:red;">please enter valid Email</small></div> 
+
+                                <div class="col-md-12">
+                                    <input class="form-control" type="number" name="studentAdharCard" formControlName="studentAdharCard" placeholder="Student Adhar Card Number" required>
+                                </div>
+                                <div class="col-md-12 text-right" *ngIf="studentAdharCard!==null && studentAdharCard.invalid"><small style="color:red;">please enter valid Adhar number</small></div> 
+
+                                <div class="col-md-12">
+                                    <input class="form-control" type="number" name="fatherAdharCard" formControlName="fatherAdharCard" placeholder="Father Adhar Card Number" required>
+                                </div>
+                                <div class="col-md-12 text-right" *ngIf="fatherAdharCard!==null && fatherAdharCard.invalid"><small style="color:red;">please enter valid Adhar number</small></div> 
                                 
                                 <div class="col-md-12">
                                     <input class="form-control" type="text" name="currentAdress" formControlName="currentAdress" placeholder="Current Address" required>

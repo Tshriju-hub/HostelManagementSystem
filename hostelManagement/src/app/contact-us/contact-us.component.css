@@ -108,6 +108,12 @@
   background: linear-gradient(to right, #ff6a5b 0%, #ff4d7e 100%);
 }
 
+.contact2 .contact-container .address,
+.contact2 .contact-container .phone {
+  color: white; /* Change color to white */
+}
+
+
 td {
   padding: 10px;
 }
