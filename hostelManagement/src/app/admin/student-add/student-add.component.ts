@@ -40,8 +40,6 @@ export class StudentAddComponent implements OnInit {
     mobileNo: new FormControl('',[Validators.required, Validators.pattern("[7-9]{1}[0-9]{9}")]),
     fatherMobileNo: new FormControl('',[Validators.required, Validators.pattern("[7-9]{1}[0-9]{9}")]),
     email: new FormControl('',[Validators.required, Validators.email]),
-    studentAdharCard: new FormControl('',[Validators.required, Validators.pattern("[0-9]{12}")]),
-    fatherAdharCard: new FormControl('',[Validators.required, Validators.pattern("[0-9]{12}")]),
     currentAdress: new FormControl('',[Validators.required]),
     collegeName: new FormControl('',[Validators.required])
   });
@@ -146,7 +144,7 @@ export class StudentAddComponent implements OnInit {
 
   addStudent() {
     if(!this.studentDetails.valid) {
-      alert('Please Enter Valiad Value !');
+      alert('Please Enter Valid Value !');
       return;
     }
     // console.log(this.studentDetails);
@@ -190,14 +188,5 @@ export class StudentAddComponent implements OnInit {
 
   get fatherMobileNo() {
     return this.studentDetails.get('fatherMobileNo');
-  } 
-
-  get studentAdharCard() {
-    return this.studentDetails.get('studentAdharCard');
-  } 
-
-  get fatherAdharCard() {
-    return this.studentDetails.get('fatherAdharCard');
-  } 
-
+  }
 }

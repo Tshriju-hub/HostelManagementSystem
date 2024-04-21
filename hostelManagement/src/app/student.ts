@@ -9,8 +9,6 @@ export interface Student {
     mobileNo: number;
     fatherMobileNo: number;
     email: string;
-    studentAdharCard: number;
-    fatherAdharCard: number;
     currentAdress: string;
     collegeName: string;
     isStatus: boolean;

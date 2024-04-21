@@ -1,11 +1,9 @@
 .member {
     border: 2px solid rgb(18, 128, 91); 
 }
-
 img {
     width: 100%;
 }
-
 img.img-fluid {
     height: 249px;
     width: 249px;

@@ -53,8 +53,6 @@ async function updateStudent(student) {
                 mobileNo: student.mobileNo,
                 fatherMobileNo: student.fatherMobileNo,
                 email: student.email,
-                studentAdharCard: student.studentAdharCard,
-                fatherAdharCard: student.fatherAdharCard, 
                 currentAdress: student.currentAdress,
                 collegeName: student.collegeName
             }

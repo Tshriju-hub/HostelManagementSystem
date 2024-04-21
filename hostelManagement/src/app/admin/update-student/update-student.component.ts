@@ -48,8 +48,6 @@ export class UpdateStudentComponent implements OnInit {
     mobileNo: new FormControl('',[Validators.required, Validators.pattern("[7-9]{1}[0-9]{9}")]),
     fatherMobileNo: new FormControl('',[Validators.required, Validators.pattern("[7-9]{1}[0-9]{9}")]),
     email: new FormControl('',[Validators.required, Validators.email]),
-    studentAdharCard: new FormControl('',[Validators.required, Validators.pattern("[0-9]{12}")]),
-    fatherAdharCard: new FormControl('',[Validators.required, Validators.pattern("[0-9]{12}")]),
     currentAdress: new FormControl('',[Validators.required]),
     collegeName: new FormControl('',[Validators.required]),
     isStatus: new FormControl('',[Validators.required])
@@ -128,8 +126,6 @@ export class UpdateStudentComponent implements OnInit {
     this.studentDetails.controls['mobileNo'].setValue(student.mobileNo);
     this.studentDetails.controls['fatherMobileNo'].setValue(student.fatherMobileNo);
     this.studentDetails.controls['email'].setValue(student.email);
-    this.studentDetails.controls['studentAdharCard'].setValue(student.studentAdharCard);
-    this.studentDetails.controls['fatherAdharCard'].setValue(student.fatherAdharCard);
     this.studentDetails.controls['currentAdress'].setValue(student.currentAdress);
     this.studentDetails.controls['collegeName'].setValue(student.collegeName);
     this.studentDetails.controls['isStatus'].setValue(student.isStatus);
