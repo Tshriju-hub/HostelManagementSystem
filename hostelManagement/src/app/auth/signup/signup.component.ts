@@ -1,5 +1,5 @@
 import { EMPTY } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { Injectable, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/user';
@@ -76,5 +76,8 @@ export class SignupComponent implements OnInit {
   redirectToHome() {
     this.router.navigate(['/dashboard']); // navigate to dashboard page
   }
-
 }
+
+
+
+
