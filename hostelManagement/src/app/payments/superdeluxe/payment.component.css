@@ -1,0 +1,42 @@
+/* super-deluxe-room.component.css */
+
+.super-deluxe-room {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.super-deluxe-room img {
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+.super-deluxe-room h3 {
+  margin-top: 20px;
+}
+
+.super-deluxe-room ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.super-deluxe-room ul li {
+  margin-bottom: 10px;
+}
+
+.super-deluxe-room button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.super-deluxe-room button:hover {
+  background-color: #0056b3;
+}
+
+.payment-options {
+  margin-top: 20px;
+}
