@@ -11,7 +11,7 @@ import { PaymentComponent} from '../app/payment/payment.component';
 import { FoodMenuComponent } from './food-menu/food-menu.component';
 import { MenuComponent } from './menu/menu.component';
 import { MenusComponent } from './menus/menus.component';
-
+import { PaymentsComponent } from './payments/superdeluxe/payment.component';
 const routes: Routes = [
   {
     path:'Payment',
@@ -29,6 +29,9 @@ const routes: Routes = [
   {
     path:'menus',
     component:MenusComponent
+  },
+  {path:"superdeluxe",
+  component:PaymentsComponent
   },
   {
     path:'',
