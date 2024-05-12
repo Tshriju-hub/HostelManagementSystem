@@ -27,12 +27,12 @@ export class PricesComponent implements OnInit {
       this.prices = hostelPriceDetail;
       this.setValue(hostelPriceDetail);
     });
-    this.priceDetails.get('superDeluxe')!.disable();
-    this.priceDetails.get('deluxe')!.disable();
-    this.priceDetails.get('standard')!.disable();
-    this.priceDetails.get('foodPackage')!.disable();
-    this.priceDetails.get('electricityBillPerUnit')!.disable();
-    this.priceDetails.get('securityDeposit')!.disable();
+    this.priceDetails.get('superDeluxe')!.enable();
+    this.priceDetails.get('deluxe')!.enable();
+    this.priceDetails.get('standard')!.enable();
+    this.priceDetails.get('foodPackage')!.enable();
+    this.priceDetails.get('electricityBillPerUnit')!.enable();
+    this.priceDetails.get('securityDeposit')!.enable();
   }
 
   setValue(price: Prices) {
