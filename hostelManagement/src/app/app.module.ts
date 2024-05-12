@@ -17,6 +17,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { PaymentComponent } from './payment/payment.component';
 import { FoodMenuComponent } from './food-menu/food-menu.component';
 import { MenuComponent } from './menu/menu.component';
+import { MenusComponent } from './menus/menus.component';
 // import { SigninComponent } from './auth/signin/signin.component';
 // import { SignupComponent } from './auth/signup/signup.component';
 
@@ -33,6 +34,7 @@ import { MenuComponent } from './menu/menu.component';
     PaymentComponent,
     FoodMenuComponent,
     MenuComponent,
+    MenusComponent,
   ],
   imports: [
     BrowserModule,

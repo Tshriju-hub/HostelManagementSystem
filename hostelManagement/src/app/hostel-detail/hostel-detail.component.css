@@ -1,10 +1,11 @@
+
 .card:hover {
     box-shadow: -8px 8px 12px 0 rgb(0 0 0 / 58%);;
 }
 
 .mx-5 {
-    margin-right: 5rem!important;
-    margin-left: 5rem!important;
+    margin-right: 6rem!important;
+    margin-left: 2rem!important;
 }
 .overlay {
     position: fixed;
@@ -37,4 +38,10 @@
     color: #333; /* dark gray color for close button */
 }
 
+.btn {
+    display: block;
+    margin: 0 auto;
+    width: 200px; /* Adjust width as needed */
+    border: 2px solid #22b322;
+  }
 

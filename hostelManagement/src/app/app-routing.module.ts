@@ -10,6 +10,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { PaymentComponent} from '../app/payment/payment.component';
 import { FoodMenuComponent } from './food-menu/food-menu.component';
 import { MenuComponent } from './menu/menu.component';
+import { MenusComponent } from './menus/menus.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path:'menu',
     component:MenuComponent
+  },
+  {
+    path:'menus',
+    component:MenusComponent
   },
   {
     path:'',

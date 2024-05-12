@@ -47,11 +47,11 @@ export class HostelDetailComponent implements OnInit {
   Menu(menu:String):void{
     this.router.navigate(['menu']);
   }
-/*
+
   sMenu(Payment:String):void{
-    this.router.navigate(['Menu2']);
+    this.router.navigate(['menus']);
   }
-  */
+
   ngOnInit(): void {
   }
 

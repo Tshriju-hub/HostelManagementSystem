@@ -1,0 +1,43 @@
+<div>
+    <div class="a">
+        <h2 class="menu-title">स्वादिष्ट मेलमिलाप खाना (Delicious Fusion Delight)</h2>
+    </div>
+      <div class="food-menu-container">
+        <!-- Breakfast Menu -->
+        <div class="menu-category">
+          <h3 class="category-title">Breakfast</h3>
+          <div *ngFor="let item of breakfastMenus" class="menu-item">
+            <h4>{{ item.name }}</h4>
+            <p>{{ item.price }}</p>
+          </div>
+        </div>
+      
+        <!-- Lunch Menu -->
+        <div class="menu-category">
+          <h3 class="category-title">Lunch</h3>
+          <div *ngFor="let item of lunchMenus" class="menu-item">
+            <h4>{{ item.name }}</h4>
+            <p>{{ item.price }}</p>
+          </div>
+        </div>
+      
+        <!-- Dinner Menu -->
+        <div class="menu-category">
+          <h3 class="category-title">Dinner</h3>
+          <div *ngFor="let item of dinnerMenus" class="menu-item">
+            <h4>{{ item.name }}</h4>
+            <p>{{ item.price }}</p>
+          </div>
+        </div>
+      
+        <!-- Starters Menu -->
+        <div class="menu-category">
+          <h3 class="category-title">Starters</h3>
+          <div *ngFor="let item of startersMenus" class="menu-item">
+            <h4>{{ item.name }}</h4>
+            <p>{{ item.price }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+      
