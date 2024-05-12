@@ -3,9 +3,9 @@
     box-shadow: -8px 8px 12px 0 rgb(0 0 0 / 58%);;
 }
 
-.mx-5 {
-    margin-right: 6rem!important;
-    margin-left: 2rem!important;
+.mx-auto{
+    margin-right: 6rem;
+    margin-left: 2rem;
 }
 .overlay {
     position: fixed;
