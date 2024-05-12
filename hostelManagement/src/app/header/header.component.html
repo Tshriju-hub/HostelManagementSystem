@@ -30,6 +30,7 @@
             </li>
       </ul>
       <button *ngIf="user?.role == 'Admin'" type="button" routerLink="/admin" routerLinkActive="active" class="btn btn-outline-danger mx-2">Admin  <i class="fas fa-user-shield"></i></button>
+      <button *ngIf="user?.role == 'User'" type="button" routerLink="/user" routerLinkActive="active" class="btn btn-outline-success mx-2">User  <i class="fas fa-user-shield"></i></button>
 
       <button *ngIf="!user" type="button" routerLink="/auth" routerLinkActive="active" class="btn btn-outline-success mx-2">Login / SignUp <i class="fas fa-sign-in-alt"></i></button>
   </div>

@@ -13,3 +13,12 @@ a.navbar-brand.text-light {
 .navbar-light .navbar-nav .nav-link.active {
     color: red;
 } 
+.custom-hover:hover {
+    background-color: #28a745; /* Green color */
+    color: white; /* Text color */
+    border-color: #28a745; /* Border color */
+}
+
+.custom-hover:hover i {
+    color: white; /* Icon color */
+}
