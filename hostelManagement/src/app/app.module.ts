@@ -14,6 +14,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { FooterComponent } from './footer/footer.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ProfileComponent } from './profile/profile.component';
+import { PaymentComponent } from './payment/payment.component';
 
 // import { SigninComponent } from './auth/signin/signin.component';
 // import { SignupComponent } from './auth/signup/signup.component';
@@ -28,6 +29,7 @@ import { ProfileComponent } from './profile/profile.component';
     FooterComponent,
     NotFoundComponent,
     ProfileComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,

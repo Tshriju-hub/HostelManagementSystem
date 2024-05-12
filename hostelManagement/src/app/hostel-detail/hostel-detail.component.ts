@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Prices } from '../prices';
 import { Availability } from '../availability';
 import { AdminService } from '../admin/admin.service';
@@ -22,7 +23,7 @@ export class HostelDetailComponent implements OnInit {
     girlsSuperDeluxeRooms: 0 // 11
   };
 
-  constructor(private adminService: AdminService) 
+  constructor(private adminService: AdminService,private router: Router) 
   { 
     this.adminService.findHostelPriceDetails().subscribe(hostelPriceDetail =>(this.prices = hostelPriceDetail));
     
@@ -32,6 +33,11 @@ export class HostelDetailComponent implements OnInit {
     this.adminService.girlsSuperDeluxRooms().subscribe((total) => { this.availability.girlsSuperDeluxeRooms = total.length; });
     this.adminService.girlsDeluxRooms().subscribe((total) => { this.availability.girlsDeluxeRooms = total.length; });
     this.adminService.girlsStandardRooms().subscribe((total) => { this.availability.girlsStandardRooms = total.length; });
+  }
+
+  //Method to navigate to payment page
+  goToPage(Payment:String):void{
+    this.router.navigate(['Payment']);
   }
   
   ngOnInit(): void {
