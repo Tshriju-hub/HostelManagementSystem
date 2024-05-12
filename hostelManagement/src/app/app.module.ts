@@ -15,7 +15,8 @@ import { FooterComponent } from './footer/footer.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PaymentComponent } from './payment/payment.component';
-
+import { FoodMenuComponent } from './food-menu/food-menu.component';
+import { MenuComponent } from './menu/menu.component';
 // import { SigninComponent } from './auth/signin/signin.component';
 // import { SignupComponent } from './auth/signup/signup.component';
 
@@ -30,6 +31,8 @@ import { PaymentComponent } from './payment/payment.component';
     NotFoundComponent,
     ProfileComponent,
     PaymentComponent,
+    FoodMenuComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,

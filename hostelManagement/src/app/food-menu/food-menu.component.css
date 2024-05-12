@@ -1,0 +1,68 @@
+
+.menu-title {
+    margin-top: 40px;
+    text-align: center;
+    color: #22b322; /* Green text */
+    font-size: 24px;
+  }
+  
+  .food-menu-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #ffffff; /* White background */
+    padding: 5px; /* Added padding for better spacing */
+  }
+  
+  .menu-category {
+    width: calc(30% - 15px); /* Two categories per row */
+    margin-bottom: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+    background-color: #ffffff; /* Light gray background */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Stronger shadow */
+    padding: 20px; /* Added padding for better spacing */
+    border: 5px solid #22b322;
+  }
+  
+  .menu-category:not(:first-child) {
+    margin-left: 20px; /* Add margin only to categories after the first one */
+  }
+  
+  .category-title {
+    text-align: center;
+    font-size: 20px;
+    color: #22b322; /* Dark text */
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
+  
+  .menu-item {
+    background-color: #31c353; /* White background */
+    border-radius: 8px; /* Rounded corners */
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(25, 223, 94, 0.1); /* Subtle shadow */
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .menu-item h4,
+  .menu-item p {
+    color: #ffffff; /* Dark text */
+    margin: 0;
+  }
+  
+  
+  .menu-item:hover {
+    background-color: #f0f0f0; /* Lighter gray background on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+    transform: translateY(-2px); /* Move the item slightly up on hover */
+  }
+  
+  .menu-item:hover h4,
+  .menu-item:hover p {
+    color: #22b322;
+    font-weight: bold;  /* Green text on hover */
+  }
+  
