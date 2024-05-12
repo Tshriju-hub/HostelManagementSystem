@@ -7,8 +7,13 @@ import { HostelDetailComponent } from './hostel-detail/hostel-detail.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ProfileComponent } from './profile/profile.component';
+import { PaymentComponent} from '../app/payment/payment.component';
 
 const routes: Routes = [
+  {
+    path:'Payment',
+    component:PaymentComponent
+  },
   {
     path:'',
     pathMatch:'full',
