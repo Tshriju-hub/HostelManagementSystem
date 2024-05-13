@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AdminService } from 'src/app/admin/admin.service';
 import { Prices } from '../../prices';
 import { Availability } from '../../availability';
@@ -26,12 +27,16 @@ export class PaymenttComponent implements OnInit {
     girlsSuperDeluxeRooms: 0
   };
 
-  constructor(private adminService: AdminService) {}
+  constructor(private adminService: AdminService, private router:Router) {}
 
   ngOnInit(): void {
     // Fetch prices and availability data
     this.adminService.findHostelPriceDetails().subscribe(hostelPriceDetail => (this.prices = hostelPriceDetail));
     this.fetchAvailability();
+  }
+
+  goToPage(Payments:String):void{
+    this.router.navigate(['hostel-detail']);
   }
 
   fetchAvailability(): void {
