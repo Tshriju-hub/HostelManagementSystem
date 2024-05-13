@@ -115,3 +115,17 @@
   max-width: 300px; /* Adjust the maximum width */
   margin-top: 20px; /* Add margin for spacing */
 }
+.back-to-hostel-btn {
+  margin-top: 20px;
+  position: absolute; /* Adjust this value as needed */
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.back-to-hostel-btn:hover {
+  background-color: #0056b3;
+}

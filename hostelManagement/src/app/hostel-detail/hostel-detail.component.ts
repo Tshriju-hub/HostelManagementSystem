@@ -43,6 +43,9 @@ export class HostelDetailComponent implements OnInit {
   ToPage(Payment:String):void{
     this.router.navigate(['deluxe']);
   }
+  Page(Payment:String):void{
+    this.router.navigate(['standard']);
+  }
 
   showMenu(foodmenu:String):void{
     this.router.navigate(['food-menu']);
