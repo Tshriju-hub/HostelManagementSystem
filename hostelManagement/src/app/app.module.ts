@@ -19,6 +19,9 @@ import { FoodMenuComponent } from './food-menu/food-menu.component';
 import { MenuComponent } from './menu/menu.component';
 import { MenusComponent } from './menus/menus.component';
 import { CommonModule } from '@angular/common';
+import { PaymentsComponent } from './payments/superdeluxe/payment.component';
+import { PaymenttComponent } from './payments/deluxe/payment.component';
+import { PaymenttsComponent } from './payments/standard/payment.component';
 // import { SigninComponent } from './auth/signin/signin.component';
 // import { SignupComponent } from './auth/signup/signup.component';
 
@@ -36,6 +39,9 @@ import { CommonModule } from '@angular/common';
     FoodMenuComponent,
     MenuComponent,
     MenusComponent,
+    PaymentsComponent,
+    PaymenttComponent,
+    PaymenttsComponent
   ],
   imports: [
     BrowserModule,

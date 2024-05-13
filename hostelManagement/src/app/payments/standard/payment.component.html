@@ -1,11 +1,12 @@
 <div class="container">
   <div class="room-details">
-    <h2 class="room-title">Super Deluxe Room</h2>
+    <h2 class="room-title">Standard Room</h2>
     <div class="room-info">
       <div class="room-photo">
-        <img src="../../assets/img/girlsuperdelux.jpeg" alt="Super Deluxe Room">
+        <img src="../../assets/img/girlstandard.JPG" alt="Super Deluxe Room">
       </div>
     </div>
+    <button class="back-to-hostel-btn" (click)="goToPage('hostel-detail')">Back to Hostel Detail</button>
   </div>
   <div class="purchase-form">
     <h3 class="description-title">Room Specifications</h3>
@@ -23,10 +24,10 @@
         <p class="price-info">Price per Room: ${{ prices?.superDeluxe }}</p>
       </div>
       <div class="availability">
-        <p class="availability-info">Available Rooms: {{ availability?.boysSuperDeluxeRooms }}</p>
+        <p class="availability-info">Available Rooms: {{ availability?.boysStandardRooms }}</p>
       </div>
     </div>
-    <div *ngIf="availability?.boysSuperDeluxeRooms > 0" class="room-options-container">
+    <div *ngIf="availability?.boysStandardRooms > 0" class="room-options-container">
       <label for="numRooms" class="select-room-dropdown">Number of Rooms:</label>
       <select id="numRooms" [(ngModel)]="numRooms" name="numRooms" class="select-room-dropdown option" style="margin-left:5px;">
         <option *ngFor="let room of availableRoomOptions()" [ngValue]="room">{{ room }}</option>
@@ -35,4 +36,6 @@
     <button class="book-now-btn" (click)="bookNow()">Book Now</button>
     <div id="paypal-button-container"></div>
   </div>
-</div>
+  </div>
+
+

@@ -1,9 +1,9 @@
 <div class="container">
   <div class="room-details">
-    <h2 class="room-title">Super Deluxe Room</h2>
+    <h2 class="room-title">Deluxe Room</h2>
     <div class="room-info">
       <div class="room-photo">
-        <img src="../../assets/img/girlsuperdelux.jpeg" alt="Super Deluxe Room">
+        <img src="../../assets/img/girldelux.jpeg" alt="Super Deluxe Room">
       </div>
     </div>
   </div>
@@ -20,13 +20,13 @@
     </div>
     <div class="room-price-availability">
       <div class="room-price">
-        <p class="price-info">Price per Room: ${{ prices?.superDeluxe }}</p>
+        <p class="price-info">Price per Room: ${{ prices?.deluxe }}</p>
       </div>
       <div class="availability">
-        <p class="availability-info">Available Rooms: {{ availability?.boysSuperDeluxeRooms }}</p>
+        <p class="availability-info">Available Rooms: {{ availability?.boysDeluxeRooms }}</p>
       </div>
     </div>
-    <div *ngIf="availability?.boysSuperDeluxeRooms > 0" class="room-options-container">
+    <div *ngIf="availability?.boysDeluxeRooms > 0" class="room-options-container">
       <label for="numRooms" class="select-room-dropdown">Number of Rooms:</label>
       <select id="numRooms" [(ngModel)]="numRooms" name="numRooms" class="select-room-dropdown option" style="margin-left:5px;">
         <option *ngFor="let room of availableRoomOptions()" [ngValue]="room">{{ room }}</option>

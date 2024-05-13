@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AdminService } from 'src/app/admin/admin.service';
 import { Prices } from '../../prices';
 import { Availability } from '../../availability';
@@ -10,7 +11,7 @@ declare var paypal: any;
   templateUrl: './payment.component.html',
   styleUrls: ['./payment.component.css']
 })
-export class PaymentsComponent implements OnInit {
+export class PaymenttsComponent implements OnInit {
 
   roomType = 'superdeluxe';
   prices: Prices;
@@ -26,7 +27,7 @@ export class PaymentsComponent implements OnInit {
     girlsSuperDeluxeRooms: 0
   };
 
-  constructor(private adminService: AdminService) {}
+  constructor(private adminService: AdminService, private router: Router) {}
 
   ngOnInit(): void {
     // Fetch prices and availability data
@@ -34,16 +35,20 @@ export class PaymentsComponent implements OnInit {
     this.fetchAvailability();
   }
 
+  goToPage(Payments:String):void{
+    this.router.navigate(['hostel-detail']);
+  }
+
   fetchAvailability(): void {
     // Fetch availability data
-    this.adminService.boysSuperDeluxRooms().subscribe((total) => { this.availability.boysSuperDeluxeRooms = total.length; });
+    this.adminService.boysStandardRooms().subscribe((total) => { this.availability.boysStandardRooms = total.length; });
     this.adminService.boysDeluxRooms().subscribe((total) => { this.availability.boysDeluxeRooms = total.length; });
     // Fetch other room availability data similarly
   }
 
   availableRoomOptions(): number[] {
     // Extract the number of available rooms
-    const numAvailableRooms = this.availability?.boysSuperDeluxeRooms || 0; // Use the appropriate property here
+    const numAvailableRooms = this.availability?.boysStandardRooms || 0; // Use the appropriate property here
     
     // Generate an array of available room options
     return Array.from({ length: numAvailableRooms }, (_, index) => index + 1);
@@ -90,14 +95,14 @@ export class PaymentsComponent implements OnInit {
 
     // Add logic to handle successful room booking based on room type and gender
     switch(this.roomType) {
-      case 'superdeluxe':
+      case 'standard':
         if (gender === 'boys') {
           // Handle super deluxe room booking for boys
-          console.log('Super deluxe room booked for boys');
+          console.log('standard room booked for boys');
           // Add your specific logic for super deluxe room booking for boys
         } else if (gender === 'girls') {
           // Handle super deluxe room booking for girls
-          console.log('Super deluxe room booked for girls');
+          console.log('standard room booked for girls');
           // Add your specific logic for super deluxe room booking for girls
         }
         break;
