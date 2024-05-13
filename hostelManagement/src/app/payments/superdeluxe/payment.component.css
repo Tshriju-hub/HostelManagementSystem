@@ -1,42 +1,48 @@
-/* super-deluxe-room.component.css */
-
-.super-deluxe-room {
+.container {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
 }
 
-.super-deluxe-room img {
-  max-width: 100%;
+.room-info {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 20px;
 }
 
-.super-deluxe-room h3 {
-  margin-top: 20px;
+.room-image {
+  width: 50%;
+  border-radius: 5px;
 }
 
-.super-deluxe-room ul {
-  list-style-type: none;
+.details {
+  width: 45%;
+}
+
+.details p {
+  margin: 5px 0;
+}
+
+ul {
   padding: 0;
+  margin: 0;
 }
 
-.super-deluxe-room ul li {
-  margin-bottom: 10px;
+li {
+  list-style-type: none;
 }
 
-.super-deluxe-room button {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  cursor: pointer;
+/* Colors */
+h2 {
+  color: green;
 }
 
-.super-deluxe-room button:hover {
-  background-color: #0056b3;
+.container {
+  background-color: white;
 }
 
-.payment-options {
+/* PayPal Button Styling */
+#paypal-button-container {
+  text-align: center;
   margin-top: 20px;
 }

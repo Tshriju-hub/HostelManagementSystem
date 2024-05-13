@@ -7,7 +7,7 @@ import { Prices } from '../../prices';
 @Injectable({
   providedIn: 'root'
 })
-export class HostelDetailService {
+export class PaymentDetailService {
 
   private prices$ = new Subject<Prices>();
   private apiUrl = 'http://localhost:4050/api/';

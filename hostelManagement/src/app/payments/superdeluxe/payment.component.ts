@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Prices } from '../../prices';
-import { Availability } from '../../availability';
 import { AdminService } from '../../admin/admin.service';
 
 declare var paypal: any;
@@ -13,17 +12,8 @@ declare var paypal: any;
 })
 export class PaymentsComponent implements OnInit {
   prices: Prices;
-  room: any[];
-  availability: Availability = {
-    boysStandardRooms: 0,
-    boysDeluxeRooms: 0,
-    boysSuperDeluxeRooms: 0,
-    girlsStandardRooms: 0,
-    girlsDeluxeRooms: 0,
-    girlsSuperDeluxeRooms: 0
-  };
-
-  roomType: string; // Declare roomType property
+  selectedRooms: number = 1; // Number of rooms to purchase
+  availability: number = 5; // Initialize availability
 
   constructor(private adminService: AdminService, private router: Router) {}
 
@@ -33,11 +23,15 @@ export class PaymentsComponent implements OnInit {
       this.prices = hostelPriceDetail;
     });
 
-    // Fetch availability data
-    this.adminService.boysSuperDeluxRooms().subscribe(total => {
-      this.availability.boysSuperDeluxeRooms = total.length;
-    });
-    // Add other subscriptions for availability data here...
+    // Fetch availability data for superDeluxe rooms
+    this.adminService.getTotalAvailability().subscribe(
+      (totalAvailability: any) => {
+        this.extractSuperDeluxeAvailability(totalAvailability);
+      },
+      (error: any) => {
+        console.error('Error fetching availability:', error);
+      }
+    );
 
     // Render PayPal button
     this.renderPayPalButton();
@@ -47,12 +41,11 @@ export class PaymentsComponent implements OnInit {
   renderPayPalButton(): void {
     paypal.Buttons({
       createOrder: (data: any, actions: any) => {
-        const totalAmount = '100.00'; // Replace with dynamic calculation
+        const totalAmount = this.calculateTotalAmount(); // Calculate total amount based on selected rooms and prices
         return actions.order.create({
           purchase_units: [{
             amount: {
-              value: totalAmount,
-              currency_code: 'USD'
+              value: totalAmount.toString(),
             }
           }]
         });
@@ -60,7 +53,12 @@ export class PaymentsComponent implements OnInit {
       onApprove: (data: any, actions: any) => {
         return actions.order.capture().then((details: any) => {
           console.log(details);
-          this.handleSuccessfulRoomBooking(details);
+          if (this.checkAvailability()) {
+            this.handleSuccessfulRoomBooking(details);
+          } else {
+            console.error('Room not available');
+            // Add logic to handle when room is not available
+          }
         });
       },
       onError: (err: any) => {
@@ -69,26 +67,27 @@ export class PaymentsComponent implements OnInit {
     }).render('#paypal-button-container');
   }
 
+  extractSuperDeluxeAvailability(totalAvailability: any): void {
+    const girlsSuperDeluxeAvailability = totalAvailability.girlsSuperDeluxe;
+    this.availability = girlsSuperDeluxeAvailability;
+  }
+
+  // Method to calculate total amount based on selected rooms and prices
+  calculateTotalAmount(): number {
+    return this.prices.superDeluxe * this.selectedRooms;
+  }
+
+  // Method to check availability before booking
+  checkAvailability(): boolean {
+    return this.availability >= this.selectedRooms;
+  }
+
   handleSuccessfulRoomBooking(details: any): void {
-    const gender = 'boys'; // Example: Get gender from your system (boys/girls)
-    switch (this.roomType) {
-      case 'superdeluxe':
-        if (gender === 'boys') {
-          console.log('Super deluxe room booked for boys');
-          // Add specific logic for super deluxe room booking for boys
-        } else if (gender === 'girls') {
-          console.log('Super deluxe room booked for girls');
-          // Add specific logic for super deluxe room booking for girls
-        }
-        break;
-      case 'deluxe':
-        console.log('Deluxe room booked');
-        // Add specific logic for deluxe room booking
-        break;
-      case 'standard':
-        console.log('Standard room booked');
-        // Add specific logic for standard room booking
-        break;
-    }
+    // Perform actions after successful room booking, e.g., redirect to confirmation page
+    this.router.navigate(['/confirmation']);
+  }
+
+  updateSelectedRooms(value: number): void {
+    this.selectedRooms = value;
   }
 }

@@ -18,6 +18,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { FoodMenuComponent } from './food-menu/food-menu.component';
 import { MenuComponent } from './menu/menu.component';
 import { MenusComponent } from './menus/menus.component';
+import { CommonModule } from '@angular/common';
 // import { SigninComponent } from './auth/signin/signin.component';
 // import { SignupComponent } from './auth/signup/signup.component';
 
@@ -42,7 +43,8 @@ import { MenusComponent } from './menus/menus.component';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule,
   ],
   providers: [
     {

@@ -14,6 +14,9 @@ export class AdminService {
 
   constructor(private httpClient: HttpClient, private router: Router) { }
 
+  // Method to get the total availability by summing up the counts from different categories
+  
+
   addStudent(studentToSave: Student) {
     return this.httpClient.post<any>(`${this.apiUrl}addStudent`,studentToSave).pipe
     (
@@ -134,6 +137,36 @@ export class AdminService {
       catchError(error => {
         const msg = "Boys Standard Room Details not fetch. Please try again";
         return of(msg);
+      })
+    );
+  }
+
+  getTotalAvailability() {
+    return this.boysSuperDeluxRooms().pipe(
+      switchMap(boysSuperDeluxeCount => {
+        return this.boysDeluxRooms().pipe(
+          switchMap(boysDeluxeCount => {
+            return this.boysStandardRooms().pipe(
+              switchMap(boysStandardCount => {
+                return this.girlsSuperDeluxRooms().pipe(
+                  switchMap(girlsSuperDeluxeCount => {
+                    return this.girlsDeluxRooms().pipe(
+                      switchMap(girlsDeluxeCount => {
+                        return this.girlsStandardRooms().pipe(
+                          switchMap(girlsStandardCount => {
+                            const totalAvailability = boysSuperDeluxeCount + boysDeluxeCount + boysStandardCount +
+                                                        girlsSuperDeluxeCount + girlsDeluxeCount + girlsStandardCount;
+                            return of(totalAvailability);
+                          })
+                        );
+                      })
+                    );
+                  })
+                );
+              })
+            );
+          })
+        );
       })
     );
   }
