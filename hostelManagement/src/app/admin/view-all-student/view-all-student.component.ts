@@ -7,14 +7,9 @@ import { ViewAllStudentService } from './view-all-student.service';
 @Component({
   selector: 'view-all-student',
   templateUrl: './view-all-student.component.html',
-  styleUrls: ['./view-all-student.component.css',
-    '../student-add/student-add.component.css'
-  ]
+  styleUrls: ['./view-all-student.component.css', '../student-add/student-add.component.css']
 })
-
-
 export class ViewAllStudentComponent implements OnInit {
-
   students: Student[] = [];
   msg: string;
 
@@ -36,37 +31,32 @@ export class ViewAllStudentComponent implements OnInit {
     rNo: new FormControl('',[Validators.required])
   });
 
-  constructor(private viewAllStudentService: ViewAllStudentService, private router: Router) 
-  { 
-    this.viewAllStudentService.findStudent()
-    .subscribe((studentsDetail) => {
-        this.students = studentsDetail;
-        this.students.sort((a, b) => (a.roomNo > b.roomNo) ? 1 : -1);
-        this.students = this.students.filter(a=> a.isStatus !== false);
-        
-        this.femaleStudents = this.students.filter(a=> a.gender == "female");
-        this.superDeluxeRoomsFemaleStudents = this.femaleStudents.filter(a => a.roomCategory == "Super Deluxe");
-        this.deluxeRoomsFemaleStudents = this.femaleStudents.filter(a => a.roomCategory == "Deluxe");
-        this.standardRoomsFemaleStudents = this.femaleStudents.filter(a => a.roomCategory == "Standard");
+  constructor(private viewAllStudentService: ViewAllStudentService, private router: Router) {
+    this.viewAllStudentService.findStudent().subscribe((studentsDetail) => {
+      this.students = studentsDetail;
+      this.students.sort((a, b) => (a.roomNo > b.roomNo) ? 1 : -1);
+      this.students = this.students.filter(a => a.isStatus !== false);
 
-        this.maleStudents = this.students.filter(a=> a.gender == "male");
-        this.superDeluxeRoomsMaleStudents = this.maleStudents.filter(a => a.roomCategory == "Super Deluxe");
-        this.deluxeRoomsMaleStudents = this.maleStudents.filter(a => a.roomCategory == "Deluxe");
-        this.standardRoomsMaleStudents = this.maleStudents.filter(a => a.roomCategory == "Standard");
+      this.femaleStudents = this.students.filter(a=> a.gender == "female");
+      this.superDeluxeRoomsFemaleStudents = this.femaleStudents.filter(a => a.roomCategory == "Super Deluxe");
+      this.deluxeRoomsFemaleStudents = this.femaleStudents.filter(a => a.roomCategory == "Deluxe");
+      this.standardRoomsFemaleStudents = this.femaleStudents.filter(a => a.roomCategory == "Standard");
 
-        this.msg = 'There is not a single student';
-      }
-    );
+      this.maleStudents = this.students.filter(a=> a.gender == "male");
+      this.superDeluxeRoomsMaleStudents = this.maleStudents.filter(a => a.roomCategory == "Super Deluxe");
+      this.deluxeRoomsMaleStudents = this.maleStudents.filter(a => a.roomCategory == "Deluxe");
+      this.standardRoomsMaleStudents = this.maleStudents.filter(a => a.roomCategory == "Standard");
+
+      this.msg = 'There is not a single student';
+    });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  searchRoomNo() 
-  {
+  searchRoomNo() {
     this.searchIsDone = false;
-    if(!this.rNoForSearch.valid) {
-      alert('please enter roomNo');
+    if (!this.rNoForSearch.valid) {
+      alert('Please enter roomNo');
       return;
     }
     const roomNoDetails = this.rNoForSearch.getRawValue();
