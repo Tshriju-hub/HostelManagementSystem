@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,ElementRef , OnInit,ViewChild  } from '@angular/core';
 
 @Component({
   selector: 'hostel-footer',
@@ -7,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  email = "darshanparmar263@gmail.com";
-  userName = "darshankparmar";
+  email = "dawatmng16@gmail.com";
+  userName = "dawatamang";
   
   constructor() { }
+  scrollToDetailSection():void{
+    const girlsRoomSection=document.getElementById('girls-section');
+    if(girlsRoomSection){
+      girlsRoomSection.scrollIntoView({behavior:'smooth'});
+    }
+  }
 
   ngOnInit(): void {
   }
