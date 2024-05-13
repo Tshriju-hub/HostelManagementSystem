@@ -1,3 +1,11 @@
+body {
+    padding-top: 56px;
+}
+@media(min-width:992px){
+    body{
+        padding-top: 64px;
+    }
+}
 .card:hover {
     box-shadow: 0 8px 12px 0 rgb(0 0 0 / 20%);
 }
