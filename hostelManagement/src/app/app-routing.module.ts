@@ -12,6 +12,8 @@ import { FoodMenuComponent } from './food-menu/food-menu.component';
 import { MenuComponent } from './menu/menu.component';
 import { MenusComponent } from './menus/menus.component';
 import { PaymentsComponent } from './payments/superdeluxe/payment.component';
+import { PaymenttComponent } from './payments/deluxe/payment.component';
+import { PaymenttsComponent } from './payments/standard/payment.component';
 const routes: Routes = [
   {
     path:'Payment',
@@ -32,6 +34,12 @@ const routes: Routes = [
   },
   {path:"superdeluxe",
   component:PaymentsComponent
+  },
+  {path:"deluxe",
+  component:PaymenttComponent
+  },
+  {path:"standard",
+  component:PaymenttsComponent
   },
   {
     path:'',

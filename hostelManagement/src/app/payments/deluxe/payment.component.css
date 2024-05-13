@@ -18,7 +18,7 @@
   margin-bottom: 20px;
 }
 .room-description:hover{
-  color:green;
+  color:grey;
   font-weight: bold;
 }
 .room-price-availability {
@@ -32,7 +32,7 @@
 }
 
 .description-title {
-  color: grey;
+  color: green;
   margin-bottom: 10px;
 }
 

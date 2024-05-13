@@ -10,7 +10,7 @@ declare var paypal: any;
   templateUrl: './payment.component.html',
   styleUrls: ['./payment.component.css']
 })
-export class PaymentsComponent implements OnInit {
+export class PaymenttsComponent implements OnInit {
 
   roomType = 'superdeluxe';
   prices: Prices;
@@ -36,7 +36,7 @@ export class PaymentsComponent implements OnInit {
 
   fetchAvailability(): void {
     // Fetch availability data
-    this.adminService.boysSuperDeluxRooms().subscribe((total) => { this.availability.boysSuperDeluxeRooms = total.length; });
+    this.adminService.boysStandardRooms().subscribe((total) => { this.availability.boysStandardRooms = total.length; });
     this.adminService.boysDeluxRooms().subscribe((total) => { this.availability.boysDeluxeRooms = total.length; });
     // Fetch other room availability data similarly
   }
@@ -90,14 +90,14 @@ export class PaymentsComponent implements OnInit {
 
     // Add logic to handle successful room booking based on room type and gender
     switch(this.roomType) {
-      case 'superdeluxe':
+      case 'standard':
         if (gender === 'boys') {
           // Handle super deluxe room booking for boys
-          console.log('Super deluxe room booked for boys');
+          console.log('standard room booked for boys');
           // Add your specific logic for super deluxe room booking for boys
         } else if (gender === 'girls') {
           // Handle super deluxe room booking for girls
-          console.log('Super deluxe room booked for girls');
+          console.log('standard room booked for girls');
           // Add your specific logic for super deluxe room booking for girls
         }
         break;

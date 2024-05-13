@@ -10,9 +10,9 @@ declare var paypal: any;
   templateUrl: './payment.component.html',
   styleUrls: ['./payment.component.css']
 })
-export class PaymentsComponent implements OnInit {
+export class PaymenttComponent implements OnInit {
 
-  roomType = 'superdeluxe';
+  roomType = 'deluxe';
   prices: Prices;
   room: any[];
   numRooms: number = 1;
@@ -35,7 +35,6 @@ export class PaymentsComponent implements OnInit {
   }
 
   fetchAvailability(): void {
-    // Fetch availability data
     this.adminService.boysSuperDeluxRooms().subscribe((total) => { this.availability.boysSuperDeluxeRooms = total.length; });
     this.adminService.boysDeluxRooms().subscribe((total) => { this.availability.boysDeluxeRooms = total.length; });
     // Fetch other room availability data similarly
@@ -43,7 +42,7 @@ export class PaymentsComponent implements OnInit {
 
   availableRoomOptions(): number[] {
     // Extract the number of available rooms
-    const numAvailableRooms = this.availability?.boysSuperDeluxeRooms || 0; // Use the appropriate property here
+    const numAvailableRooms = this.availability?.boysDeluxeRooms || 0; // Use the appropriate property here
     
     // Generate an array of available room options
     return Array.from({ length: numAvailableRooms }, (_, index) => index + 1);
@@ -90,14 +89,14 @@ export class PaymentsComponent implements OnInit {
 
     // Add logic to handle successful room booking based on room type and gender
     switch(this.roomType) {
-      case 'superdeluxe':
+      case 'deluxe':
         if (gender === 'boys') {
           // Handle super deluxe room booking for boys
-          console.log('Super deluxe room booked for boys');
+          console.log('deluxe room booked for boys');
           // Add your specific logic for super deluxe room booking for boys
         } else if (gender === 'girls') {
           // Handle super deluxe room booking for girls
-          console.log('Super deluxe room booked for girls');
+          console.log('deluxe room booked for girls');
           // Add your specific logic for super deluxe room booking for girls
         }
         break;
