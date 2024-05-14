@@ -24,7 +24,6 @@ input[type=number]{
     overflow: hidden;
 }
 
-
 .form-holder {
       display: flex;
       flex-direction: column;
