@@ -1,0 +1,32 @@
+<div class="row" style="width: 100.81%;">
+    <aside class="col-lg-3" style="width: 335px;"> 
+        <user-hostel-sidebar></user-hostel-sidebar>
+    </aside>
+    <main class="col-lg-9" style="min-height: 100vh;"> 
+          <div class="row">
+                <div class="col-sm-6 col-md-4">
+                    <div class="div-box">
+                        <div class="container mt-4">
+                            <h1>Personal Details</h1>
+                            <div class="student-info">
+                              <p><strong>Room Category:</strong> {{ student.roomCategory }}</p>
+                              <p><strong>Room No:</strong> {{ student.roomNo }}</p>
+                              <p><strong>Food Package:</strong> {{ student.foodPackage }}</p>
+                              <p><strong>Person No:</strong> {{ student.personNo }}</p>
+                              <p><strong>First Name:</strong> {{ student.firstName }}</p>
+                              <p><strong>Last Name:</strong> {{ student.lastName }}</p>
+                              <p><strong>Father Name:</strong> {{ student.fatherName }}</p>
+                              <p><strong>Gender:</strong> {{ student.gender }}</p>
+                              <p><strong>Mobile No:</strong> {{ student.mobileNo }}</p>
+                              <p><strong>Father Mobile No:</strong> {{ student.fatherMobileNo }}</p>
+                              <p><strong>Email:</strong> {{ student.email }}</p>
+                              <p><strong>Current Address:</strong> {{ student.currentAdress }}</p>
+                              <p><strong>College Name:</strong> {{ student.collegeName }}</p>
+                              <p><strong>Status:</strong> {{ student.isStatus ? 'Active' : 'Inactive' }}</p>
+                            </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

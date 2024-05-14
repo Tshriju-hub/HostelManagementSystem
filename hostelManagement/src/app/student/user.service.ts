@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, switchMap, toArray } from 'rxjs/operators';
-import { EMPTY, of, throwError } from 'rxjs';
+import { Observable, EMPTY, of, throwError } from 'rxjs';
 import { Student } from '../student';
 import { Router } from '@angular/router';
 
@@ -13,6 +13,20 @@ export class UserService {
   private apiUrl = 'http://localhost:4050/api/student/';
 
   constructor(private httpClient: HttpClient, private router: Router) { }
+
+  getStudent() {
+    return this.httpClient.get<any>(`${this.apiUrl}getStudent`).pipe(
+      switchMap((data: Student) => {
+        console.log('Student data fetched:', data);
+        return of(data);
+      }),
+      catchError(error => {
+        console.error('Error fetching student data', error);
+        const msg = 'Error fetching student data, please try again later.';
+        return of(msg);
+      })
+    );
+  }
 
   addStudent(studentToSave: Student) {
     return this.httpClient.post<any>(`${this.apiUrl}addStudent`,studentToSave).pipe
@@ -190,4 +204,5 @@ export class UserService {
     );
   }
 
+   
 }

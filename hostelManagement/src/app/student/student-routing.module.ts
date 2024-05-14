@@ -19,7 +19,7 @@ const routes: Routes = [
         {
           path:'',
           pathMatch:'full',
-          redirectTo: '/user/dashboard'
+          redirectTo: '/student/dashboard'
         },
         {
           path:'dashboard',
