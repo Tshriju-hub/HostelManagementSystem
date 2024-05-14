@@ -26,19 +26,29 @@
 
                                 <div class="col-md-12">
                                     <select class="form-select mt-3" name="roomCategory" formControlName="roomCategory" (change)="genderOrRoomCatSelected()" required>
-                                          <option selected disabled value="">Room Category</option>
+                                          <option selected disabled value="">Select a room category</option>
                                           <option value="Super Deluxe">Super Delux Room</option>
                                           <option value="Deluxe">Delux Room</option>
                                           <option value="Standard">Standard Room</option>
                                    </select>
                                 </div>
+
                             <span *ngIf="showRoomNo == true">
                                 <div class="col-md-12">
                                     <select class="form-select mt-3" name="roomNo" formControlName="roomNo" required>
-                                          <option selected disabled value="">Room No</option>
+                                          <option selected disabled value="">Select a room no.</option>
                                           <option *ngFor='let i of roomNo' value={{i}}> {{i}} </option>
                                    </select>
                                 </div>
+
+                                <div class="col-md-12">
+                                    <select class="form-select mt-3" name="foodPackage" formControlName="foodPackage" required>
+                                      <option selected disabled value="">Select a food package</option>
+                                      <option value="Nepali Food">Nepali Food</option>
+                                      <option value="Foreign Food">Foreign Food</option>
+                                      <option value="Delicious Fusion Delight">Delicious Fusion Delight</option>
+                                    </select>
+                                  </div>
 
                                 <div class="col-md-12">
                                    <input class="form-control" type="text" name="firstName" formControlName="firstName" placeholder="First Name" required>

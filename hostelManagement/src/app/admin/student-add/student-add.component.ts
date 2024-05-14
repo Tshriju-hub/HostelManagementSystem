@@ -33,6 +33,7 @@ export class StudentAddComponent implements OnInit {
   studentDetails = new FormGroup({
     roomCategory : new FormControl('',[Validators.required]),
     roomNo: new FormControl('',[Validators.required]),
+    foodPackage: new FormControl('',[Validators.required]),
     firstName: new FormControl('',[Validators.required]),
     lastName: new FormControl('',[Validators.required]),
     fatherName: new FormControl('',[Validators.required]),
