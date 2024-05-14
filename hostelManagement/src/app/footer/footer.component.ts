@@ -7,8 +7,8 @@ import { Component,ElementRef , OnInit,ViewChild  } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  email = "dawatmng16@gmail.com";
-  userName = "dawatamang";
+  email = "info@heraldhostel.np";
+  userName = "heraldhostel";
   
   constructor() { }
   scrollToDetailSection():void{
