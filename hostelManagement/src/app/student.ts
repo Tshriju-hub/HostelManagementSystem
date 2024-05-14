@@ -1,6 +1,7 @@
 export interface Student {
     roomCategory : string;
     roomNo: number;
+    foodPackage: string;
     personNo: number;
     firstName: string;
     lastName: string;

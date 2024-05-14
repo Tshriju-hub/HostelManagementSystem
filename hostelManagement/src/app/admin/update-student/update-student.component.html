@@ -263,7 +263,7 @@
     <div class="modal fade" id="viewStudent{{student.personNo}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header" style="background-color: #d2cece94;">
+            <div class="modal-header" style="background-color: #ffffff;">
             <h1 class="modal-title m-0" id="exampleModalLongTitle" style="font-family: serif;">Room No: {{student.roomNo}}</h1>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -280,11 +280,18 @@
                                         <div class="row mx-1">
                                             <div class="col-md-6">
                                                 <input type="hidden" name="roomNo" formControlName="roomNo">
-                                                <input class="form-control" type="text" name="gender" value="{{student.gender}}" style="background-color: #989898;" disabled>
+                                                <input class="form-control" type="text" name="gender" value="{{student.gender}}" style="background-color: #ffffff;" disabled>
                                             </div>
                                             <div class="col-md-6">
-                                                <input class="form-control" type="text" name="roomCategory" value="{{student.roomCategory}}" style="background-color: #989898;" disabled>
+                                                <input class="form-control" type="text" name="roomCategory" value="{{student.roomCategory}}" style="background-color: #ffffff;" disabled>
                                             </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <label for="foodPackage" style="margin-top:16px;margin-bottom:0px"><span>Selected Food Package :</span></label>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <input class="form-control" type="text" name="foodPackage" value="{{student.foodPackage}}" disabled>
                                         </div>
 
                                         <div class="col-md-12">
@@ -319,7 +326,7 @@
                                                 <input class="form-control" type="text" name="fatherName" formControlName="fatherName" value="{{student.fatherName}}" required>
                                             </div>
                                             <div class="col-md-6">
-                                                <input class="form-control" type="text" name="lastName" value="{{student.lastName}}" style="background-color: #989898;" disabled>
+                                                <input class="form-control" type="text" name="lastName" value="{{student.lastName}}" style="background-color: #ffffff;" disabled>
                                             </div>
                                         </div>
 
