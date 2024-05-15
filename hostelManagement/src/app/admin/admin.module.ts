@@ -14,6 +14,7 @@ import { InquiryComponent } from './inquiry/inquiry.component';
 import { PricesComponent } from './prices/prices.component';
 import { UsersComponent } from './users/users.component';
 import { RoomStructureComponent } from './room-structure/room-structure.component';
+import { RoomservicesComponent } from './roomservices/roomservices.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { RoomStructureComponent } from './room-structure/room-structure.componen
     InquiryComponent,
     PricesComponent,
     UsersComponent,
-    RoomStructureComponent
+    RoomStructureComponent,
+    RoomservicesComponent
   ],
   imports: [
     CommonModule,

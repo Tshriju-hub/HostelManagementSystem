@@ -136,4 +136,43 @@ export class UpdateStudentComponent implements OnInit {
     return this.rNoForSearch.get('rNo');
   }
 
+  transferOrCreateStudent() {
+    const newRoomNoStr = prompt("Enter new room number:");
+    if (newRoomNoStr) {
+      const newRoomNo = parseInt(newRoomNoStr, 10); // Convert string to number
+      if (!isNaN(newRoomNo)) { // Check if conversion was successful
+        const student = this.studentDetails.getRawValue();
+        student.roomNo = newRoomNo; // Update the room number
+        // Check if the student already exists
+        const existingStudent = this.students.find(s => s.roomNo === newRoomNo);
+        //Remove existing student from their current room
+        if(existingStudent){
+          this.adminService.removeStudent(student)
+          .subscribe((msg) => {
+            console.log(msg);
+            window.location.reload();
+          });
+        }
+        if (existingStudent) {
+          // Update existing student
+          this.adminService.updateStudent(student)
+            .subscribe((msg) => {
+              alert(msg);
+              window.location.reload();
+            });
+        } else {
+          // Create new student entry
+          this.adminService.addStudent(student)
+            .subscribe((msg) => {
+              alert(msg);
+              window.location.reload();
+            });
+        }
+      } else {
+        alert("Please enter a valid room number.");
+      }
+    }
+    
+  }
+
 }
