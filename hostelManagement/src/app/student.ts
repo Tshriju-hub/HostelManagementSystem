@@ -13,7 +13,7 @@ export interface Student {
     currentAdress: string;
     collegeName: string;
     isStatus: boolean;
-    paymentStatus: boolean; 
+    paymentStatus: string; 
     checkout: string;
   }
   

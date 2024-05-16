@@ -21,7 +21,6 @@ export class DashboardComponent implements OnInit {
   }
 
   fetchStudentData(): void {
-    // Mock student data (replace this with actual API call)
     const mockStudent: Student = {
       roomCategory: 'Deluxe',
       roomNo: 111,
@@ -37,7 +36,7 @@ export class DashboardComponent implements OnInit {
       currentAdress: 'Kirtipur',
       collegeName: 'Herald',
       isStatus: true,
-      paymentStatus: true, // Assume payment is done
+      paymentStatus: "paid", // Assume payment is done
       checkout: "2024/6/10" // Set checkout date to current date
     };
 
