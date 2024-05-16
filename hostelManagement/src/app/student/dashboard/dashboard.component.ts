@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
     // Mock student data (replace this with actual API call)
     const mockStudent: Student = {
       roomCategory: 'Deluxe',
-      roomNo: 101,
+      roomNo: 111,
       foodPackage: 'Delicious Fusion Delight',
       personNo: 1,
       firstName: 'Shreeju',
@@ -34,7 +34,7 @@ export class DashboardComponent implements OnInit {
       mobileNo: 9863094734,
       fatherMobileNo: 9876543210,
       email: 'user@gmail.com',
-      currentAdress: '',
+      currentAdress: 'Kirtipur',
       collegeName: 'Herald',
       isStatus: true,
       paymentStatus: true, // Assume payment is done

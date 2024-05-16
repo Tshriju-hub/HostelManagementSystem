@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 @Component({
   selector: 'pm-food-menu',
   templateUrl: './food-menu.component.html',
@@ -11,12 +12,17 @@ export class FoodMenuComponent implements OnInit {
   dinnerMenu: MenuItem[] = [];
   startersMenu: MenuItem[] = [];
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
     // Initialize your menu items here
     this.initializeMenu();
   }
+
+  goToPage(menu:String):void{
+    this.router.navigate(['hostel-detail']);
+  }
+
 
   initializeMenu() {
     // Populate breakfast menu

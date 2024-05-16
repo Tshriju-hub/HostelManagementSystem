@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'pm-food-Menus',
@@ -12,11 +13,15 @@ export class MenusComponent implements OnInit {
   dinnerMenus: MenusItem[] = [];
   startersMenus: MenusItem[] = [];
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
     // Initialize your Menus items here
     this.initializeMenus();
+  }
+
+  goToPage(menu:String):void{
+    this.router.navigate(['hostel-detail']);
   }
 
   initializeMenus() {

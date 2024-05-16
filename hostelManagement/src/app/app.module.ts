@@ -14,7 +14,6 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { FooterComponent } from './footer/footer.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ProfileComponent } from './profile/profile.component';
-import { PaymentComponent } from './payment/payment.component';
 import { FoodMenuComponent } from './food-menu/food-menu.component';
 import { MenuComponent } from './menu/menu.component';
 import { MenusComponent } from './menus/menus.component';
@@ -36,7 +35,6 @@ import { DashboardService } from './student/dashboard/dashboard.service';
     FooterComponent,
     NotFoundComponent,
     ProfileComponent,
-    PaymentComponent,
     FoodMenuComponent,
     MenuComponent,
     MenusComponent,

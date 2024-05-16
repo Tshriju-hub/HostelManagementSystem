@@ -5,6 +5,18 @@
     color: #22b322; /* Green text */
     font-size: 24px;
   }
+  .back-to-hostel-btn {
+    position: relative;
+    bottom: 15px; /* Adjust this value to position the button slightly above the footer */
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left:50px;
+  }
   
   .food-menu-container {
     display: flex;
