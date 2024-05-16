@@ -76,10 +76,18 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a routerLink="/student/foodMenu" routerLinkActive="active" class="nav-link text-white">
+          <a routerLink="" routerLinkActive="active" class="nav-link text-white">
             <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
             Food Menu
           </a>
+          <ul id="menu_item1" class="submenu collapse show" data-bs-parent="#nav_accordion">
+            <li>
+                <a routerLink="/student/foodMenu" routerLinkActive="dkpActive" class="nav-link">
+                <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+                Menu
+                </a>
+              </li>
+        </ul>
         </li>
         <li class="nav-item">
           <a routerLink="/student/roomStructure" routerLinkActive="active" class="nav-link text-white">
