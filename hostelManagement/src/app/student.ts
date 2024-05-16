@@ -1,5 +1,5 @@
 export interface Student {
-    roomCategory : string;
+    roomCategory: string;
     roomNo: number;
     foodPackage: string;
     personNo: number;
@@ -13,4 +13,7 @@ export interface Student {
     currentAdress: string;
     collegeName: string;
     isStatus: boolean;
-}
+    paymentStatus: boolean; 
+    checkout: string;
+  }
+  

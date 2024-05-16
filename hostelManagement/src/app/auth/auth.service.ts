@@ -14,7 +14,7 @@ interface UserDto {
   providedIn: 'root'
 })
 export class AuthService {
-  private user$ = new Subject<User>();
+  user$ = new Subject<User>();
   private apiUrl = 'http://localhost:4050/api/auth/';
 
   constructor(private httpClient: HttpClient, private tokenStorage: TokenStorageService) { }

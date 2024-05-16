@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../user.service';
+import { DashboardService } from './dashboard.service';
 import { Student } from 'src/app/student';
 
 @Component({
@@ -11,25 +11,37 @@ import { Student } from 'src/app/student';
 export class DashboardComponent implements OnInit {
   student: Student;
 
-  constructor(private router: Router, private userService: UserService) {}
+  constructor(
+    private router: Router,
+    private dashboardService: DashboardService
+  ) {}
 
   ngOnInit(): void {
-    this.getStudent();
+    this.fetchStudentData();
   }
 
-  getStudent(): void {
-    this.userService.getStudent().subscribe(
-      (data: any) => {
-        if (typeof data === 'string') {
-          console.error(data);
-        } else {
-          console.log('Student data fetched:', data);
-          this.student = data;
-        }
-      },
-      (error) => {
-        console.error('Error fetching student data', error);
-      }
-    );
+  fetchStudentData(): void {
+    // Mock student data (replace this with actual API call)
+    const mockStudent: Student = {
+      roomCategory: 'Deluxe',
+      roomNo: 101,
+      foodPackage: 'Delicious Fusion Delight',
+      personNo: 1,
+      firstName: 'Shreeju',
+      lastName: 'Thapa',
+      fatherName: 'abc',
+      gender: 'Female',
+      mobileNo: 9863094734,
+      fatherMobileNo: 9876543210,
+      email: 'user@gmail.com',
+      currentAdress: '',
+      collegeName: 'Herald',
+      isStatus: true,
+      paymentStatus: true, // Assume payment is done
+      checkout: "2024/6/10" // Set checkout date to current date
+    };
+
+    // Assign mock student data
+    this.student = mockStudent;
   }
 }

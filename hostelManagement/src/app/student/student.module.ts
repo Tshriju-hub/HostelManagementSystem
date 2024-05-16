@@ -5,6 +5,7 @@ import { UserRoutingModule } from './student-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './user.service';
+import { DashboardService } from './dashboard/dashboard.service';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FoodMenuComponent } from './food-menu/food-menu.component';
 import { RoomStructureComponent } from './room-structure/room-structure.component';
@@ -24,7 +25,8 @@ import { RoomStructureComponent } from './room-structure/room-structure.componen
     ReactiveFormsModule
   ],
   providers: [
-    UserService
+    UserService,
+    DashboardService
   ]
 })
 export class UserModule { }

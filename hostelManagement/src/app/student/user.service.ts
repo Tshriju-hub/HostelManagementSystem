@@ -14,6 +14,10 @@ export class UserService {
 
   constructor(private httpClient: HttpClient, private router: Router) { }
 
+  getStudentByEmailAndUsername(email: string, username: string): Observable<Student> {
+    return this.httpClient.get<Student>(`${this.apiUrl}/students?email=${email}&username=${username}`);
+  }
+
   getStudent() {
     return this.httpClient.get<any>(`${this.apiUrl}getStudent`).pipe(
       switchMap((data: Student) => {

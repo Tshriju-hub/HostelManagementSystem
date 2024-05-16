@@ -22,6 +22,7 @@ import { CommonModule } from '@angular/common';
 import { PaymentsComponent } from './payments/superdeluxe/payment.component';
 import { PaymenttComponent } from './payments/deluxe/payment.component';
 import { PaymenttsComponent } from './payments/standard/payment.component';
+import { DashboardService } from './student/dashboard/dashboard.service';
 // import { SigninComponent } from './auth/signin/signin.component';
 // import { SignupComponent } from './auth/signup/signup.component';
 
@@ -56,8 +57,9 @@ import { PaymenttsComponent } from './payments/standard/payment.component';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthHeaderInterceptorService,
-      multi: true
-    }
+      multi: true,
+    },
+    DashboardService
   ],
   bootstrap: [AppComponent]
 })
