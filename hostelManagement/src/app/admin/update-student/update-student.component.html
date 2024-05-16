@@ -280,10 +280,10 @@
                                         <div class="row mx-1">
                                             <div class="col-md-6">
                                                 <input type="hidden" name="roomNo" formControlName="roomNo">
-                                                <input class="form-control" type="text" name="gender" value="{{student.gender}}" style="background-color: #ffffff;" disabled>
+                                                <input class="form-control" type="text" name="gender" value="{{student.gender}}" style="background-color: #bebebe;" disabled>
                                             </div>
                                             <div class="col-md-6">
-                                                <input class="form-control" type="text" name="roomCategory" value="{{student.roomCategory}}" style="background-color: #ffffff;" disabled>
+                                                <input class="form-control" type="text" name="roomCategory" value="{{student.roomCategory}}" style="background-color: #bebebe;" disabled>
                                             </div>
                                         </div>
 
@@ -291,9 +291,8 @@
                                             <label for="foodPackage" style="margin-top:16px;margin-bottom:0px"><span>Selected Food Package :</span></label>
                                         </div>
                                         <div class="col-md-12">
-                                            <input class="form-control" type="text" name="foodPackage" value="{{student.foodPackage}}" disabled>
+                                            <input class="form-control" type="text" name="foodPackage" formControlName="foodPackage" value="{{student.foodPackage}}" required>
                                         </div>
-                                        
 
                                         <div class="col-md-12">
                                             <label for="studentDetails" style="margin-top:16px;margin-bottom:0px"><span>Student Details :</span></label>
