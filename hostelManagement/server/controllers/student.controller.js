@@ -3,32 +3,35 @@ const boysRoomsController = require('./boysRooms.controller');
 const girlsRoomsController = require('./girlsRooms.controller');
 
 async function insertStudent(student) {
-    // console.log(`saving user to db`, student);
-    if(student.gender == "male")
-    {
-        if(student.roomCategory == "Super Deluxe")
-            msg = await boysRoomsController.updateSuperDeluxe(student);
-        if(student.roomCategory == "Deluxe")
-            msg = await boysRoomsController.updateDeluxe(student);
-        if(student.roomCategory == "Standard")
-            msg = await boysRoomsController.updateStandard(student);
+    // Validate the foodPackage field
+    const validFoodPackages = ["Nepali Food", "Foreign Food", "Delicious Fusion Delight"];
+    if (!validFoodPackages.includes(student.foodPackage)) {
+        throw new Error("Invalid food package");
     }
-    else if(student.gender == "female")
-    {
-        if(student.roomCategory == "Super Deluxe")
+
+    if (student.gender === "male") {
+        if (student.roomCategory === "Super Deluxe")
+            msg = await boysRoomsController.updateSuperDeluxe(student);
+        if (student.roomCategory === "Deluxe")
+            msg = await boysRoomsController.updateDeluxe(student);
+        if (student.roomCategory === "Standard")
+            msg = await boysRoomsController.updateStandard(student);
+    } else if (student.gender === "female") {
+        if (student.roomCategory === "Super Deluxe")
             msg = await girlsRoomsController.updateSuperDeluxe(student);
-        if(student.roomCategory == "Deluxe")
+        if (student.roomCategory === "Deluxe")
             msg = await girlsRoomsController.updateDeluxe(student);
-        if(student.roomCategory == "Standard")
+        if (student.roomCategory === "Standard")
             msg = await girlsRoomsController.updateStandard(student);
     }
 
-    if(!msg.acknowledged) {
-        req.msg = "Error: Student Details Not Updated Successfull";
+    if (!msg.acknowledged) {
+        req.msg = "Error: Student Details Not Updated Successfully";
         return;
     }
     return await new Student(student).save();
 }
+
 
 async function viewStudent() {
     // console.log(`serching student on db`);
@@ -42,7 +45,12 @@ async function viewStudent() {
 }
 
 async function updateStudent(student) {
-    // console.log(`updating student on db`);
+    // Validate the foodPackage field
+    const validFoodPackages = ["Nepali Food", "Foreign Food", "Delicious Fusion Delight"];
+    if (!validFoodPackages.includes(student.foodPackage)) {
+        throw new Error("Invalid food package");
+    }
+
     return Student.updateOne(
         { roomNo: student.roomNo },
         {
@@ -54,11 +62,13 @@ async function updateStudent(student) {
                 fatherMobileNo: student.fatherMobileNo,
                 email: student.email,
                 currentAdress: student.currentAdress,
-                collegeName: student.collegeName
+                collegeName: student.collegeName,
+                foodPackage: student.foodPackage
             }
         }
     );
 }
+
 
 async function removeStudent(student) {
     console.log(student);

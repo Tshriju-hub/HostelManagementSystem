@@ -28,7 +28,7 @@ export class ViewAllStudentComponent implements OnInit {
   searchmsg: string = "No Student Found!!";
 
   rNoForSearch = new FormGroup({
-    rNo: new FormControl('',[Validators.required])
+    rNo: new FormControl('', [Validators.required])
   });
 
   constructor(private viewAllStudentService: ViewAllStudentService, private router: Router) {
@@ -37,12 +37,12 @@ export class ViewAllStudentComponent implements OnInit {
       this.students.sort((a, b) => (a.roomNo > b.roomNo) ? 1 : -1);
       this.students = this.students.filter(a => a.isStatus !== false);
 
-      this.femaleStudents = this.students.filter(a=> a.gender == "female");
+      this.femaleStudents = this.students.filter(a => a.gender == "female");
       this.superDeluxeRoomsFemaleStudents = this.femaleStudents.filter(a => a.roomCategory == "Super Deluxe");
       this.deluxeRoomsFemaleStudents = this.femaleStudents.filter(a => a.roomCategory == "Deluxe");
       this.standardRoomsFemaleStudents = this.femaleStudents.filter(a => a.roomCategory == "Standard");
 
-      this.maleStudents = this.students.filter(a=> a.gender == "male");
+      this.maleStudents = this.students.filter(a => a.gender == "male");
       this.superDeluxeRoomsMaleStudents = this.maleStudents.filter(a => a.roomCategory == "Super Deluxe");
       this.deluxeRoomsMaleStudents = this.maleStudents.filter(a => a.roomCategory == "Deluxe");
       this.standardRoomsMaleStudents = this.maleStudents.filter(a => a.roomCategory == "Standard");
@@ -51,7 +51,7 @@ export class ViewAllStudentComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   searchRoomNo() {
     this.searchIsDone = false;
@@ -61,11 +61,8 @@ export class ViewAllStudentComponent implements OnInit {
     }
     const roomNoDetails = this.rNoForSearch.getRawValue();
     this.searchRooms = this.students.filter(a => a.roomNo == roomNoDetails.rNo);
-    this.searchIsDone = true;
+    if (this.searchRooms.length == 0) {
+      this.searchIsDone = true;
+    }
   }
-
-  get rNo() {
-    return this.rNoForSearch.get('rNo');
-  }
-
 }

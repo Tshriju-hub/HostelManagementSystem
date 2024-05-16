@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const StudentSchema = new mongoose.Schema({
     roomCategory : { type: String, required: true },
     roomNo: { type: Number, required: true },
+    foodPackage: { type: String, required: true, enum: ['Nepali Food', 'Foreign Food', 'Delicious Fusion Delight']},
     personNo: { type: Number, required: true },
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
