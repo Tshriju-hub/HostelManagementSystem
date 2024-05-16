@@ -15,6 +15,8 @@ import { PricesComponent } from './prices/prices.component';
 import { UsersComponent } from './users/users.component';
 import { RoomStructureComponent } from './room-structure/room-structure.component';
 import { RoomservicesComponent } from './roomservices/roomservices.component';
+import { MenuuComponent } from './menu/menu.component';
+import { MenussComponent } from './menus/menus.component';
 
 
 @NgModule({
@@ -25,6 +27,8 @@ import { RoomservicesComponent } from './roomservices/roomservices.component';
     ViewAllStudentComponent,
     UpdateStudentComponent,
     FoodMenuComponent,
+    MenussComponent,
+    MenuuComponent,
     InquiryComponent,
     PricesComponent,
     UsersComponent,

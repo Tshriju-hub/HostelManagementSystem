@@ -1,12 +1,50 @@
-<div class="row py-5" style="width: 100.80%;">
-    <aside class="col-lg-3" style="width: 335px;"> 
-        <admin-hostel-sidebar></admin-hostel-sidebar>
-    </aside>
-    <main class="col-lg-9">
-
-        <div class="container d-flex justify-content-center my-5">
-            <img src="../../../assets/img/regularFoodMenu.jpg" alt="">
-        </div>
-        
-    </main>
+<div class="row" style="width: 100.81%;">
+  <aside class="col-lg-3" style="width: 335px;"> 
+      <admin-hostel-sidebar></admin-hostel-sidebar>
+  </aside>
+  <main class="col-lg-9" style="min-height: 100vh;">
+<div>
+<div class="a">
+    <h2 class="menu-title">नेपाली खानाको प्याकेज (Nepali Food Package)</h2>
 </div>
+  <div class="food-menu-container">
+    <!-- Breakfast Menu -->
+    <div class="menu-category">
+      <h3 class="category-title">Breakfast</h3>
+      <div *ngFor="let item of breakfastMenu" class="menu-item">
+        <h4>{{ item.name }}</h4>
+        <p>{{ item.price }}</p>
+      </div>
+    </div>
+  
+    <!-- Lunch Menu -->
+    <div class="menu-category">
+      <h3 class="category-title">Lunch</h3>
+      <div *ngFor="let item of lunchMenu" class="menu-item">
+        <h4>{{ item.name }}</h4>
+        <p>{{ item.price }}</p>
+      </div>
+    </div>
+  
+    <!-- Dinner Menu -->
+    <div class="menu-category">
+      <h3 class="category-title">Dinner</h3>
+      <div *ngFor="let item of dinnerMenu" class="menu-item">
+        <h4>{{ item.name }}</h4>
+        <p>{{ item.price }}</p>
+      </div>
+    </div>
+  
+    <!-- Starters Menu -->
+    <div class="menu-category">
+      <h3 class="category-title">Starters</h3>
+      <div *ngFor="let item of startersMenu" class="menu-item">
+        <h4>{{ item.name }}</h4>
+        <p>{{ item.price }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+  </main>
+</div>
+  

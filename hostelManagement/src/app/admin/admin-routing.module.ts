@@ -10,6 +10,8 @@ import { FoodMenuComponent } from './food-menu/food-menu.component';
 import { InquiryComponent } from './inquiry/inquiry.component';
 import { UsersComponent } from './users/users.component';
 import { RoomStructureComponent } from './room-structure/room-structure.component';
+import { MenuuComponent } from './menu/menu.component';
+import { MenussComponent } from './menus/menus.component';
 
 const routes: Routes = [
   {
@@ -45,6 +47,16 @@ const routes: Routes = [
           path:'foodMenu',
           pathMatch:'full',
           component: FoodMenuComponent
+        },
+        {
+          path:'Menu',
+          pathMatch:'full',
+          component: MenuuComponent
+        },
+        {
+          path:'Menus',
+          pathMatch:'full',
+          component: MenussComponent
         },
         {
           path:'inquiry',

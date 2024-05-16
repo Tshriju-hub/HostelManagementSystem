@@ -1,9 +1,9 @@
-
 .col-lg-9{background-color: #152733;}
 .menu-title {
     margin-top: 40px;
     text-align: center;
-    color: #22b322; /* Green text */
+    color: #22b322;
+    background-color:#152733;  /* Green text */
     font-size: 24px;
   }
   
@@ -11,7 +11,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    background-color:  #152733; /* White background */
+    background-color:#152733; 
     padding: 5px; /* Added padding for better spacing */
   }
   

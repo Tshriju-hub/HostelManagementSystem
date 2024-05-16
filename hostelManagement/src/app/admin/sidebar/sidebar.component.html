@@ -193,7 +193,7 @@
       </li>
       <li class="nav-item">
         <a
-          routerLink="/admin/foodMenu"
+          routerLink=""
           routerLinkActive="active"
           class="nav-link text-white"
         >
@@ -202,6 +202,48 @@
           </svg>
           Food Menu
         </a>
+          <ul
+          id="menu_item1"
+          class="submenu collapse show"
+          data-bs-parent="#nav_accordion"
+        >
+          <li>
+            <a
+              routerLink="/admin/foodMenu"
+              routerLinkActive="dkpActive"
+              class="nav-link"
+            >
+              <svg class="bi me-2" width="16" height="16">
+                <use xlink:href="#speedometer2" />
+              </svg>
+              Nepali Food Packages
+            </a>
+          </li>
+          <li>
+            <a
+              routerLink="/admin/Menu"
+              routerLinkActive="dkpActive"
+              class="nav-link"
+            >
+              <svg class="bi me-2" width="16" height="16">
+                <use xlink:href="#speedometer2" />
+              </svg>
+              Foreign Food Package
+            </a>
+          </li>
+          <li>
+            <a
+              routerLink="/admin/Menus"
+              routerLinkActive="dkpActive"
+              class="nav-link"
+            >
+              <svg class="bi me-2" width="16" height="16">
+                <use xlink:href="#speedometer2" />
+              </svg>
+              Delicious Fusion Delight
+            </a>
+          </li>
+          </ul>
       </li>
       <li class="nav-item">
         <a
