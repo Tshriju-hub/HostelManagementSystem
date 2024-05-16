@@ -34,47 +34,51 @@ export class UpdateStudentComponent implements OnInit {
   searchmsg: string = "No Student Found!!";
 
   rNoForSearch = new FormGroup({
-    rNo: new FormControl('',[Validators.required])
+    rNo: new FormControl('', [Validators.required])
   });
 
   studentDetails = new FormGroup({
-    roomNo: new FormControl('',[Validators.required]),
-    personNo: new FormControl('',[Validators.required]),
-    gender: new FormControl('',[Validators.required]),
-    roomCategory: new FormControl('',[Validators.required]),
-    firstName: new FormControl('',[Validators.required]),
-    lastName: new FormControl('',[Validators.required]),
-    fatherName: new FormControl('',[Validators.required]),
-    mobileNo: new FormControl('',[Validators.required, Validators.pattern("[7-9]{1}[0-9]{9}")]),
-    fatherMobileNo: new FormControl('',[Validators.required, Validators.pattern("[7-9]{1}[0-9]{9}")]),
-    email: new FormControl('',[Validators.required, Validators.email]),
-    currentAdress: new FormControl('',[Validators.required]),
-    collegeName: new FormControl('',[Validators.required]),
-    isStatus: new FormControl('',[Validators.required])
+    roomNo: new FormControl('', [Validators.required]),
+    personNo: new FormControl('', [Validators.required]),
+    gender: new FormControl('', [Validators.required]),
+    roomCategory: new FormControl('', [Validators.required]),
+    foodPackage: new FormControl('', [Validators.required]),
+    firstName: new FormControl('', [Validators.required]),
+    lastName: new FormControl('', [Validators.required]),
+    fatherName: new FormControl('', [Validators.required]),
+    mobileNo: new FormControl('', [Validators.required, Validators.pattern("[7-9]{1}[0-9]{9}")]),
+    fatherMobileNo: new FormControl('', [Validators.required, Validators.pattern("[7-9]{1}[0-9]{9}")]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    currentAdress: new FormControl('', [Validators.required]),
+    collegeName: new FormControl('', [Validators.required]),
+    isStatus: new FormControl('', [Validators.required])
   });
 
-  constructor(private viewAllStudentService: ViewAllStudentService, private adminService: AdminService, private router: Router, private httpClient: HttpClient) 
-  { 
+  constructor(
+    private viewAllStudentService: ViewAllStudentService,
+    private adminService: AdminService,
+    private router: Router,
+    private httpClient: HttpClient
+  ) {
     this.viewAllStudentService.findStudent()
-    .subscribe((studentsDetail) => {
+      .subscribe((studentsDetail) => {
         this.students = studentsDetail;
         this.students.sort((a, b) => (a.roomNo > b.roomNo) ? 1 : -1);
-        this.students = this.students.filter(a=> a.isStatus !== false);
-         
-        this.femaleStudents = this.students.filter(a=> a.gender == "female");
+        this.students = this.students.filter(a => a.isStatus !== false);
+
+        this.femaleStudents = this.students.filter(a => a.gender == "female");
         this.superDeluxeRoomsFemaleStudents = this.femaleStudents.filter(a => a.roomCategory == "Super Deluxe");
         this.deluxeRoomsFemaleStudents = this.femaleStudents.filter(a => a.roomCategory == "Deluxe");
         this.standardRoomsFemaleStudents = this.femaleStudents.filter(a => a.roomCategory == "Standard");
 
-        this.maleStudents = this.students.filter(a=> a.gender == "male");
+        this.maleStudents = this.students.filter(a => a.gender == "male");
         this.superDeluxeRoomsMaleStudents = this.maleStudents.filter(a => a.roomCategory == "Super Deluxe");
         this.deluxeRoomsMaleStudents = this.maleStudents.filter(a => a.roomCategory == "Deluxe");
         this.standardRoomsMaleStudents = this.maleStudents.filter(a => a.roomCategory == "Standard");
-        
+
         this.msg = 'There is not a single student';
       }
     );
-
   }
 
   ngOnInit(): void {
@@ -83,29 +87,25 @@ export class UpdateStudentComponent implements OnInit {
   updateStudent() {
     const student = this.studentDetails.getRawValue();
     this.adminService.updateStudent(student)
-    .subscribe((msg) => {
+      .subscribe((msg) => {
         alert(msg);
-    }
-    );
+      });
   }
 
   removeStudent() {
     const student = this.studentDetails.getRawValue();
-    // console.log(student);
-    if(confirm("Are you sure to delete room no " + student.roomNo)) {
+    if (confirm("Are you sure to delete room no " + student.roomNo)) {
       this.adminService.removeStudent(student)
-      .subscribe((msg) => {
+        .subscribe((msg) => {
           alert(msg);
           window.location.reload();
-      }
-      );
+        });
     }
   }
 
-  searchRoomNo() 
-  {
+  searchRoomNo() {
     this.searchIsDone = false;
-    if(!this.rNoForSearch.valid) {
+    if (!this.rNoForSearch.valid) {
       alert('please enter roomNo');
       return;
     }
@@ -115,11 +115,11 @@ export class UpdateStudentComponent implements OnInit {
   }
 
   setValue(student: Student) {
-    // console.log(student);
     this.studentDetails.controls['roomNo'].setValue(student.roomNo);
     this.studentDetails.controls['personNo'].setValue(student.personNo);
     this.studentDetails.controls['gender'].setValue(student.gender);
     this.studentDetails.controls['roomCategory'].setValue(student.roomCategory);
+    this.studentDetails.controls['foodPackage'].setValue(student.foodPackage);
     this.studentDetails.controls['firstName'].setValue(student.firstName);
     this.studentDetails.controls['lastName'].setValue(student.lastName);
     this.studentDetails.controls['fatherName'].setValue(student.fatherName);
@@ -129,7 +129,6 @@ export class UpdateStudentComponent implements OnInit {
     this.studentDetails.controls['currentAdress'].setValue(student.currentAdress);
     this.studentDetails.controls['collegeName'].setValue(student.collegeName);
     this.studentDetails.controls['isStatus'].setValue(student.isStatus);
-
   }
 
   get rNo() {
@@ -139,29 +138,24 @@ export class UpdateStudentComponent implements OnInit {
   transferOrCreateStudent() {
     const newRoomNoStr = prompt("Enter new room number:");
     if (newRoomNoStr) {
-      const newRoomNo = parseInt(newRoomNoStr, 10); // Convert string to number
-      if (!isNaN(newRoomNo)) { // Check if conversion was successful
+      const newRoomNo = parseInt(newRoomNoStr, 10);
+      if (!isNaN(newRoomNo)) {
         const student = this.studentDetails.getRawValue();
-        student.roomNo = newRoomNo; // Update the room number
-        // Check if the student already exists
+        student.roomNo = newRoomNo;
         const existingStudent = this.students.find(s => s.roomNo === newRoomNo);
-        //Remove existing student from their current room
-        if(existingStudent){
-          this.adminService.removeStudent(student)
-          .subscribe((msg) => {
-            console.log(msg);
-            window.location.reload();
-          });
-        }
         if (existingStudent) {
-          // Update existing student
-          this.adminService.updateStudent(student)
-            .subscribe((msg) => {
-              alert(msg);
-              window.location.reload();
-            });
+          if (confirm("A student already exists in the new room. Do you want to overwrite?")) {
+            this.adminService.removeStudent(existingStudent)
+              .subscribe((msg) => {
+                console.log(msg);
+                this.adminService.updateStudent(student)
+                  .subscribe((msg) => {
+                    alert(msg);
+                    window.location.reload();
+                  });
+              });
+          }
         } else {
-          // Create new student entry
           this.adminService.addStudent(student)
             .subscribe((msg) => {
               alert(msg);
@@ -172,7 +166,5 @@ export class UpdateStudentComponent implements OnInit {
         alert("Please enter a valid room number.");
       }
     }
-    
   }
-
 }
