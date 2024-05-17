@@ -32,7 +32,7 @@ export class ViewAllStudentComponent implements OnInit {
   });
 
   constructor(private viewAllStudentService: ViewAllStudentService, private router: Router) {
-    this.viewAllStudentService.findStudent().subscribe((studentsDetail) => {
+    this.viewAllStudentService.findStudent().subscribe((studentsDetail: Student[]) => {
       this.students = studentsDetail;
       this.students.sort((a, b) => (a.roomNo > b.roomNo) ? 1 : -1);
       this.students = this.students.filter(a => a.isStatus !== false);
@@ -65,4 +65,12 @@ export class ViewAllStudentComponent implements OnInit {
       this.searchIsDone = true;
     }
   }
+
+  getPaymentStatus(student: Student): string {
+    return student.paymentStatus; // Return paymentStatus directly
+  }
+
+  getFoodPackage(student: Student): string {
+    return student.foodPackage;
 }
+};

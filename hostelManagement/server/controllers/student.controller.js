@@ -1,4 +1,4 @@
-const Student =  require('../models/student.model');
+const Student = require('../models/student.model');
 const boysRoomsController = require('./boysRooms.controller');
 const girlsRoomsController = require('./girlsRooms.controller');
 
@@ -9,6 +9,13 @@ async function insertStudent(student) {
         throw new Error("Invalid food package");
     }
 
+    // Validate the paymentStatus field
+    const validPaymentStatus = ["Paid", "Installments"];
+    if (!validPaymentStatus.includes(student.paymentStatus)) {
+        throw new Error("Invalid payment status");
+    }
+
+    let msg;
     if (student.gender === "male") {
         if (student.roomCategory === "Super Deluxe")
             msg = await boysRoomsController.updateSuperDeluxe(student);
@@ -26,21 +33,21 @@ async function insertStudent(student) {
     }
 
     if (!msg.acknowledged) {
-        req.msg = "Error: Student Details Not Updated Successfully";
-        return;
+        throw new Error("Error: Student Details Not Updated Successfully");
     }
+
     return await new Student(student).save();
 }
 
-
 async function viewStudent() {
-    // console.log(`serching student on db`);
-    let student = await Student.find({});
-    if(student) {
-        return student;
-    }
-    else {
-        return throwError;
+    let students = await Student.find({});
+    if (students) {
+        return students.map(student => ({
+            ...student._doc,
+            paymentStatus: student.paymentStatus
+        }));
+    } else {
+        throw new Error("No students found");
     }
 }
 
@@ -49,6 +56,12 @@ async function updateStudent(student) {
     const validFoodPackages = ["Nepali Food", "Foreign Food", "Delicious Fusion Delight"];
     if (!validFoodPackages.includes(student.foodPackage)) {
         throw new Error("Invalid food package");
+    }
+
+    // Validate the paymentStatus field
+    const validPaymentStatus = ["Paid", "Installments"];
+    if (!validPaymentStatus.includes(student.paymentStatus)) {
+        throw new Error("Invalid payment status");
     }
 
     return Student.updateOne(
@@ -63,49 +76,44 @@ async function updateStudent(student) {
                 email: student.email,
                 currentAdress: student.currentAdress,
                 collegeName: student.collegeName,
-                foodPackage: student.foodPackage
+                foodPackage: student.foodPackage,
+                paymentStatus: student.paymentStatus
             }
         }
     );
 }
 
-
 async function removeStudent(student) {
-    console.log(student);
-    if(student.gender == "male")
-    {
-        if(student.roomCategory == "Super Deluxe")
+    let msg;
+    if (student.gender == "male") {
+        if (student.roomCategory == "Super Deluxe")
             msg = await boysRoomsController.updateSuperDeluxe(student);
-        if(student.roomCategory == "Deluxe")
+        if (student.roomCategory == "Deluxe")
             msg = await boysRoomsController.updateDeluxe(student);
-        if(student.roomCategory == "Standard")
+        if (student.roomCategory == "Standard")
             msg = await boysRoomsController.updateStandard(student);
-    }
-    else if(student.gender == "female")
-    {
-        if(student.roomCategory == "Super Deluxe")
+    } else if (student.gender == "female") {
+        if (student.roomCategory == "Super Deluxe")
             msg = await girlsRoomsController.updateSuperDeluxe(student);
-        if(student.roomCategory == "Deluxe")
+        if (student.roomCategory == "Deluxe")
             msg = await girlsRoomsController.updateDeluxe(student);
-        if(student.roomCategory == "Standard")
+        if (student.roomCategory == "Standard")
             msg = await girlsRoomsController.updateStandard(student);
     }
 
-    if(!msg.acknowledged) {
-        req.msg = "Error: Student Details Not Remove Successfull";
-        return;
+    if (!msg.acknowledged) {
+        throw new Error("Error: Student Details Not Removed Successfully");
     }
 
-    return Student.updateOne( 
+    return Student.updateOne(
         { personNo: student.personNo },
         {
             $set: {
                 isStatus: false
             }
-        }    
+        }
     );
 }
-
 
 module.exports = {
     insertStudent,

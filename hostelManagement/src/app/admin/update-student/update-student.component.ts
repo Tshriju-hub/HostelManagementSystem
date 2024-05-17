@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -43,6 +42,7 @@ export class UpdateStudentComponent implements OnInit {
     gender: new FormControl('', [Validators.required]),
     roomCategory: new FormControl('', [Validators.required]),
     foodPackage: new FormControl('', [Validators.required]),
+    paymentStatus: new FormControl('', [Validators.required]),
     firstName: new FormControl('', [Validators.required]),
     lastName: new FormControl('', [Validators.required]),
     fatherName: new FormControl('', [Validators.required]),
@@ -57,8 +57,7 @@ export class UpdateStudentComponent implements OnInit {
   constructor(
     private viewAllStudentService: ViewAllStudentService,
     private adminService: AdminService,
-    private router: Router,
-    private httpClient: HttpClient
+    private router: Router
   ) {
     this.viewAllStudentService.findStudent()
       .subscribe((studentsDetail) => {
@@ -85,11 +84,15 @@ export class UpdateStudentComponent implements OnInit {
   }
 
   updateStudent() {
-    const student = this.studentDetails.getRawValue();
-    this.adminService.updateStudent(student)
-      .subscribe((msg) => {
-        alert(msg);
-      });
+    if (this.studentDetails.valid) {
+      const student = this.studentDetails.getRawValue();
+      this.adminService.updateStudent(student)
+        .subscribe((msg) => {
+          alert(msg);
+        });
+    } else {
+      alert('Please fill all required fields correctly.');
+    }
   }
 
   removeStudent() {
@@ -101,38 +104,6 @@ export class UpdateStudentComponent implements OnInit {
           window.location.reload();
         });
     }
-  }
-
-  searchRoomNo() {
-    this.searchIsDone = false;
-    if (!this.rNoForSearch.valid) {
-      alert('please enter roomNo');
-      return;
-    }
-    const roomNoDetails = this.rNoForSearch.getRawValue();
-    this.searchRooms = this.students.filter(a => a.roomNo == roomNoDetails.rNo);
-    this.searchIsDone = true;
-  }
-
-  setValue(student: Student) {
-    this.studentDetails.controls['roomNo'].setValue(student.roomNo);
-    this.studentDetails.controls['personNo'].setValue(student.personNo);
-    this.studentDetails.controls['gender'].setValue(student.gender);
-    this.studentDetails.controls['roomCategory'].setValue(student.roomCategory);
-    this.studentDetails.controls['foodPackage'].setValue(student.foodPackage);
-    this.studentDetails.controls['firstName'].setValue(student.firstName);
-    this.studentDetails.controls['lastName'].setValue(student.lastName);
-    this.studentDetails.controls['fatherName'].setValue(student.fatherName);
-    this.studentDetails.controls['mobileNo'].setValue(student.mobileNo);
-    this.studentDetails.controls['fatherMobileNo'].setValue(student.fatherMobileNo);
-    this.studentDetails.controls['email'].setValue(student.email);
-    this.studentDetails.controls['currentAdress'].setValue(student.currentAdress);
-    this.studentDetails.controls['collegeName'].setValue(student.collegeName);
-    this.studentDetails.controls['isStatus'].setValue(student.isStatus);
-  }
-
-  get rNo() {
-    return this.rNoForSearch.get('rNo');
   }
 
   transferOrCreateStudent() {
@@ -166,5 +137,46 @@ export class UpdateStudentComponent implements OnInit {
         alert("Please enter a valid room number.");
       }
     }
+  }
+
+  onSubmit() {
+    if (this.studentDetails.valid) {
+      this.updateStudent();
+    } else {
+      alert('Please fill all required fields correctly.');
+    }
+  }
+
+  setValue(student: Student) {
+    this.studentDetails.controls['roomNo'].setValue(student.roomNo);
+    this.studentDetails.controls['personNo'].setValue(student.personNo);
+    this.studentDetails.controls['gender'].setValue(student.gender);
+    this.studentDetails.controls['roomCategory'].setValue(student.roomCategory);
+    this.studentDetails.controls['foodPackage'].setValue(student.foodPackage);
+    this.studentDetails.controls['paymentStatus'].setValue(student.paymentStatus);
+    this.studentDetails.controls['firstName'].setValue(student.firstName);
+    this.studentDetails.controls['lastName'].setValue(student.lastName);
+    this.studentDetails.controls['fatherName'].setValue(student.fatherName);
+    this.studentDetails.controls['mobileNo'].setValue(student.mobileNo);
+    this.studentDetails.controls['fatherMobileNo'].setValue(student.fatherMobileNo);
+    this.studentDetails.controls['email'].setValue(student.email);
+    this.studentDetails.controls['currentAdress'].setValue(student.currentAdress);
+    this.studentDetails.controls['collegeName'].setValue(student.collegeName);
+    this.studentDetails.controls['isStatus'].setValue(student.isStatus);
+  }
+
+  searchRoomNo() {
+    this.searchIsDone = false;
+    if (!this.rNoForSearch.valid) {
+      alert('please enter roomNo');
+      return;
+    }
+    const roomNoDetails = this.rNoForSearch.getRawValue();
+    this.searchRooms = this.students.filter(a => a.roomNo == roomNoDetails.rNo);
+    this.searchIsDone = true;
+  }
+
+  get rNo() {
+    return this.rNoForSearch.get('rNo');
   }
 }

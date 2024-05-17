@@ -295,6 +295,13 @@
                                         </div>
 
                                         <div class="col-md-12">
+                                            <label for="paymentStatus" style="margin-top: 16px; margin-bottom: 0px;"><span>Selected Payment Status:</span></label>
+                                          </div>
+                                          <div class="col-md-12">
+                                            <input class="form-control" type="text" name="paymentStatus"  value="{{student.paymentStatus}}" style="background-color: #bebebe;" disabled>
+                                          </div>                                        
+                                        
+                                        <div class="col-md-12">
                                             <label for="studentDetails" style="margin-top:16px;margin-bottom:0px"><span>Student Details :</span></label>
                                         </div>
                                         
@@ -353,10 +360,11 @@
                                         </div>
 
                                         <div class="col-md-12 mt-3 d-flex justify-content-between">
-                                            <button id="removesubmit" type="submit" (click)="removeStudent()" class="btn btn-danger">Remove</button>
-                                            <button id="maintenancesubmit" type="submit" (click)="transferOrCreateStudent()" class="btn btn-warning">Maintenance</button>
-                                            <button id="updatesubmit" type="submit" (click)="updateStudent()" class="btn btn-primary">Update</button>
-                                        </div>
+                                            <button id="removesubmit" type="button" (click)="removeStudent()" class="btn btn-danger">Remove</button>
+                                            <button id="maintenancesubmit" type="button" (click)="transferOrCreateStudent()" class="btn btn-warning">Maintenance</button>
+                                            <button id="updatesubmit" type="button" (click)="updateStudent()" class="btn btn-primary">Update</button>
+                                            <button id="submitform" type="submit" class="btn btn-success">Submit Form</button>
+                                          </div>
                                     </form>
                                 </div>
                             </div>

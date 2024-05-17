@@ -30,9 +30,10 @@ export class StudentAddComponent implements OnInit {
   girlsStandardRoomNo: number[] = [];
 
   studentDetails = new FormGroup({
-    roomCategory : new FormControl('', [Validators.required]),
+    roomCategory: new FormControl('', [Validators.required]),
     roomNo: new FormControl('', [Validators.required]),
     foodPackage: new FormControl('', [Validators.required]),
+    paymentStatus: new FormControl('', [Validators.required]),
     firstName: new FormControl('', [Validators.required]),
     lastName: new FormControl('', [Validators.required]),
     fatherName: new FormControl('', [Validators.required]),
@@ -41,7 +42,7 @@ export class StudentAddComponent implements OnInit {
     fatherMobileNo: new FormControl('', [Validators.required, Validators.pattern("[7-9]{1}[0-9]{9}")]),
     email: new FormControl('', [Validators.required, Validators.email]),
     currentAdress: new FormControl('', [Validators.required]),
-    collegeName: new FormControl('', [Validators.required])
+    collegeName: new FormControl('', [Validators.required]),
   });
 
   constructor(private router: Router, private adminService: AdminService) {
@@ -84,8 +85,7 @@ export class StudentAddComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   genderOrRoomCatSelected() {
     if (this.studentDetails.getRawValue().gender != "" && this.studentDetails.getRawValue().roomCategory != "") {
@@ -133,38 +133,50 @@ export class StudentAddComponent implements OnInit {
 
   addStudent() {
     if (!this.studentDetails.valid) {
-      alert('Please Enter Valid Value !');
-      return;
+        alert('Please Enter Valid Value !');
+        return;
     }
 
     const student = this.studentDetails.getRawValue();
     let roomDetail = this.boysSuperDeluxRooms.find(({ roomNo }) => roomNo == student.roomNo);
-    if (roomDetail == null) {
-      roomDetail = this.boysDeluxRooms.find(({ roomNo }) => roomNo == student.roomNo);
-      if (roomDetail == null) {
-        roomDetail = this.boysStandardRooms.find(({ roomNo }) => roomNo == student.roomNo);
-        if (roomDetail == null) {
-          roomDetail = this.girlsSuperDeluxRooms.find(({ roomNo }) => roomNo == student.roomNo);
-          if (roomDetail == null) {
-            roomDetail = this.girlsDeluxRooms.find(({ roomNo }) => roomNo == student.roomNo);
-            if (roomDetail == null) {
-              roomDetail = this.girlsStandardRooms.find(({ roomNo }) => roomNo == student.roomNo);
-              if (roomDetail == null) {
-                alert("error");
-                return;
-              }
+    if (!roomDetail) {
+        roomDetail = this.boysDeluxRooms.find(({ roomNo }) => roomNo == student.roomNo);
+        if (!roomDetail) {
+            roomDetail = this.boysStandardRooms.find(({ roomNo }) => roomNo == student.roomNo);
+            if (!roomDetail) {
+                roomDetail = this.girlsSuperDeluxRooms.find(({ roomNo }) => roomNo == student.roomNo);
+                if (!roomDetail) {
+                    roomDetail = this.girlsDeluxRooms.find(({ roomNo }) => roomNo == student.roomNo);
+                    if (!roomDetail) {
+                        roomDetail = this.girlsStandardRooms.find(({ roomNo }) => roomNo == student.roomNo);
+                        if (!roomDetail) {
+                            alert("error");
+                            return;
+                        }
+                    }
+                }
             }
-          }
         }
-      }
     }
     student.personNo = roomDetail.personNo;
 
-    this.adminService.addStudent(student).subscribe(s => {
-      alert(s);
-      this.router.navigate(['/admin/viewStudent']);
+    // Set the paymentStatus property directly from the form control value
+    student.paymentStatus = this.studentDetails.get('paymentStatus')?.value;
+
+    // Log the student object before sending
+    console.log('Student Object:', student);
+
+    this.adminService.addStudent(student).subscribe({
+        next: (s) => {
+            alert(s);
+            this.router.navigate(['/admin/viewStudent']);
+        },
+        error: (err) => {
+            console.error('Error adding student:', err);
+            alert('Registration failed. Please try again.');
+        }
     });
-  }
+}
 
   get email() {
     return this.studentDetails.get('email');
