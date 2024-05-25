@@ -288,10 +288,12 @@
                                         </div>
 
                                         <div class="col-md-12">
-                                            <label for="foodPackage" style="margin-top:16px;margin-bottom:0px"><span>Selected Food Package :</span></label>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <input class="form-control" type="text" name="foodPackage" formControlName="foodPackage" value="{{student.foodPackage}}" required>
+                                            <select class="form-select mt-3" name="foodPackage" formControlName="foodPackage" required>
+                                              <option selected disabled value="">Select a food package</option>
+                                              <option value="Nepali Food">Nepali Food</option>
+                                              <option value="Foreign Food">Foreign Food</option>
+                                              <option value="Delicious Fusion Delight">Delicious Fusion Delight</option>
+                                            </select>
                                         </div>
 
                                         <div class="col-md-12">
@@ -363,8 +365,8 @@
                                             <button id="removesubmit" type="button" (click)="removeStudent()" class="btn btn-danger">Remove</button>
                                             <button id="maintenancesubmit" type="button" (click)="transferOrCreateStudent()" class="btn btn-warning">Maintenance</button>
                                             <button id="updatesubmit" type="button" (click)="updateStudent()" class="btn btn-primary">Update</button>
-                                            <button id="submitform" type="submit" class="btn btn-success">Submit Form</button>
                                           </div>
+                                          
                                     </form>
                                 </div>
                             </div>
