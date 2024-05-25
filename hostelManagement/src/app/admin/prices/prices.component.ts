@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Prices } from '../../../app/prices';
 import { AdminService } from '../admin.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { negativeValueValidator } from '../admin.validators';
 @Component({
   selector: 'pm-prices',
   templateUrl: './prices.component.html',
@@ -14,12 +14,12 @@ export class PricesComponent implements OnInit {
   prices: Prices;
 
   priceDetails = new FormGroup({
-    superDeluxe: new FormControl('',[Validators.required]),
-    deluxe: new FormControl('',[Validators.required]),
-    standard: new FormControl('',[Validators.required]),
-    foodPackage: new FormControl('',[Validators.required]),
-    electricityBillPerUnit: new FormControl('',[Validators.required]),
-    securityDeposit: new FormControl('',[Validators.required])
+    superDeluxe: new FormControl('', [Validators.required, negativeValueValidator()]),
+    deluxe: new FormControl('', [Validators.required, negativeValueValidator()]),
+    standard: new FormControl('', [Validators.required, negativeValueValidator()]),
+    foodPackage: new FormControl('', [Validators.required, negativeValueValidator()]),
+    electricityBillPerUnit: new FormControl('', [Validators.required, negativeValueValidator()]),
+    securityDeposit: new FormControl('', [Validators.required, negativeValueValidator()])
   });
 
   constructor(private adminService: AdminService) {
@@ -45,21 +45,17 @@ export class PricesComponent implements OnInit {
   }
 
   updatePriceDetails() {
-    if(this.priceDetails.status == "INVALID") { 
-      alert('Please Enter Valiad Value !');
-      return; 
+    if (this.priceDetails.invalid) {
+      alert('Please Enter Valid Value!');
+      return;
     }
     const price = this.priceDetails.getRawValue();
-    // console.log(price);
     this.adminService.updatePriceDetails(price)
-    .subscribe((msg) => {
+      .subscribe((msg) => {
         alert(msg);
-    }
-    );
+      });
   }
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void { }
 
 }

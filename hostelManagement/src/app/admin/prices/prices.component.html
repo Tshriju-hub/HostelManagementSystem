@@ -7,44 +7,92 @@
         <div class="wrapper wrapper--w900 my-5">
             <div class="card card-6">
                 <div class="card-heading">
-                        <h2 class="title">Prices</h2>
+                    <h2 class="title">Prices</h2>
                 </div>
                 <div class="card-body">  
                     <form [formGroup]="priceDetails">
                         <div class="form-row">
-                            <div class="name">Super Delux Room :</div> 
+                            <div class="name">Super Deluxe Room :</div> 
                             <div class="value" (click)="this.priceDetails.get('superDeluxe')!.enable();">
                                 <input class="input--style-6" type="number" name="superDeluxe" formControlName="superDeluxe" [disabled]="true">
+                                <div *ngIf="priceDetails.get('superDeluxe')!.invalid && (priceDetails.get('superDeluxe')!.dirty || priceDetails.get('superDeluxe')!.touched)">
+                                    <small class="text-danger" *ngIf="priceDetails.get('superDeluxe')!.errors?.required">
+                                        This field is required.
+                                    </small>
+                                    <small class="text-danger" *ngIf="priceDetails.get('superDeluxe')!.errors?.negativeValue">
+                                        Value must not be negative.
+                                    </small>
+                                </div>
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name">Delux Room :</div>
+                            <div class="name">Deluxe Room :</div>
                             <div class="value" (click)="this.priceDetails.get('deluxe')!.enable();">
                                 <input class="input--style-6" type="number" id="deluxe" name="deluxe" formControlName="deluxe">
+                                <div *ngIf="priceDetails.get('deluxe')!.invalid && (priceDetails.get('deluxe')!.dirty || priceDetails.get('deluxe')!.touched)">
+                                    <small class="text-danger" *ngIf="priceDetails.get('deluxe')!.errors?.required">
+                                        This field is required.
+                                    </small>
+                                    <small class="text-danger" *ngIf="priceDetails.get('deluxe')!.errors?.negativeValue">
+                                        Value must not be negative.
+                                    </small>
+                                </div>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="name">Standard Room :</div>
                             <div class="value" (click)="this.priceDetails.get('standard')!.enable();">
                                 <input class="input--style-6" type="number" id="standard" name="standard" formControlName="standard">
+                                <div *ngIf="priceDetails.get('standard')!.invalid && (priceDetails.get('standard')!.dirty || priceDetails.get('standard')!.touched)">
+                                    <small class="text-danger" *ngIf="priceDetails.get('standard')!.errors?.required">
+                                        This field is required.
+                                    </small>
+                                    <small class="text-danger" *ngIf="priceDetails.get('standard')!.errors?.negativeValue">
+                                        Value must not be negative.
+                                    </small>
+                                </div>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="name">Food Package :</div>
                             <div class="value" (click)="this.priceDetails.get('foodPackage')!.enable();">
                                 <input class="input--style-6" type="number" id="foodPackage" name="foodPackage" formControlName="foodPackage">
+                                <div *ngIf="priceDetails.get('foodPackage')!.invalid && (priceDetails.get('foodPackage')!.dirty || priceDetails.get('foodPackage')!.touched)">
+                                    <small class="text-danger" *ngIf="priceDetails.get('foodPackage')!.errors?.required">
+                                        This field is required.
+                                    </small>
+                                    <small class="text-danger" *ngIf="priceDetails.get('foodPackage')!.errors?.negativeValue">
+                                        Value must not be negative.
+                                    </small>
+                                </div>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="name">Electricity Bill per Unit :</div>
                             <div class="value" (click)="this.priceDetails.get('electricityBillPerUnit')!.enable();">
                                 <input class="input--style-6" type="number" id="electricityBillPerUnit" name="electricityBillPerUnit" formControlName="electricityBillPerUnit">
+                                <div *ngIf="priceDetails.get('electricityBillPerUnit')!.invalid && (priceDetails.get('electricityBillPerUnit')!.dirty || priceDetails.get('electricityBillPerUnit')!.touched)">
+                                    <small class="text-danger" *ngIf="priceDetails.get('electricityBillPerUnit')!.errors?.required">
+                                        This field is required.
+                                    </small>
+                                    <small class="text-danger" *ngIf="priceDetails.get('electricityBillPerUnit')!.errors?.negativeValue">
+                                        Value must not be negative.
+                                    </small>
+                                </div>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="name">Security Fees :</div>
                             <div class="value" (click)="this.priceDetails.get('securityDeposit')!.enable();">
                                 <input class="input--style-6" type="number" id="securityDeposit" name="securityDeposit" formControlName="securityDeposit">
+                                <div *ngIf="priceDetails.get('securityDeposit')!.invalid && (priceDetails.get('securityDeposit')!.dirty || priceDetails.get('securityDeposit')!.touched)">
+                                    <small class="text-danger" *ngIf="priceDetails.get('securityDeposit')!.errors?.required">
+                                        This field is required.
+                                    </small>
+                                    <small class="text-danger" *ngIf="priceDetails.get('securityDeposit')!.errors?.negativeValue">
+                                        Value must not be negative.
+                                    </small>
+                                </div>
                             </div>
                         </div>
                     </form>

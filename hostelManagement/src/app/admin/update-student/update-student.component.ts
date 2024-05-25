@@ -108,6 +108,7 @@ export class UpdateStudentComponent implements OnInit {
       alert('Please fill out all required fields correctly.');
     }
   }
+  
 
   searchRoomNo() {
     this.searchIsDone = false;
