@@ -28,7 +28,7 @@
       </div>
     </div>
     <div *ngIf="availability?.boysStandardRooms > 0" class="room-options-container">
-      <label for="numRooms" class="select-room-dropdown">Number of Rooms:</label>
+      <label for="numRooms" class="select-room-dropdown">Room no:</label>
       <select id="numRooms" [(ngModel)]="numRooms" name="numRooms" class="select-room-dropdown option" style="margin-left:5px;">
         <option *ngFor="let room of availableRoomOptions()" [ngValue]="room">{{ room }}</option>
       </select>
