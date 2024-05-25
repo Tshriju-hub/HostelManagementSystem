@@ -138,14 +138,15 @@ export class UpdateStudentComponent implements OnInit {
           this.adminService.removeStudent(existingStudent).subscribe(
             (removeMsg) => {
               console.log(removeMsg);
-              this.adminService.updateStudent(student).subscribe(
-                (updateMsg) => {
-                  alert(updateMsg);
-                  window.location.reload();
+              this.adminService.addStudent(student).subscribe(
+                (addMsg) => {
+                  alert(addMsg);
+                  
+                  this.router.navigate(['/admin/viewStudent']);
                 },
                 (error) => {
-                  console.error('Error updating student:', error);
-                  alert('Failed to update student');
+                  console.error('Error transferring student:', error);
+                  alert('Failed to transferring student');
                 }
               );
             },
@@ -155,14 +156,14 @@ export class UpdateStudentComponent implements OnInit {
             }
           );
         } else {
-          this.adminService.addStudent(student).subscribe(
-            (addMsg) => {
-              alert(addMsg);
+          this.adminService.updateStudent(student).subscribe(
+            (updateMsg) => {
+              alert(updateMsg);
               window.location.reload();
             },
             (error) => {
-              console.error('Error adding student:', error);
-              alert('Failed to add student');
+              console.error('Error Updating student:', error);
+              alert('Failed to updating student');
             }
           );
         }
