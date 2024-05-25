@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, switchMap } from 'rxjs/operators';
-import { of, throwError } from 'rxjs';
+import { EMPTY, of, throwError } from 'rxjs';
 import { Student } from '../../app/student';
 import { Router } from '@angular/router';
 
@@ -14,9 +14,12 @@ export class AdminService {
 
   constructor(private httpClient: HttpClient, private router: Router) { }
 
+  // Method to get the total availability by summing up the counts from different categories
+  
   addStudent(studentToSave: Student) {
     return this.httpClient.post<any>(`${this.apiUrl}addStudent`, studentToSave).pipe(
       switchMap(({ student, msg }) => {
+        // Ensure foodPackage is being sent and processed correctly
         console.log('Food Package:', studentToSave.foodPackage);
         return of(msg);
       }),
@@ -29,6 +32,7 @@ export class AdminService {
   }
 
   updateStudent(studentToUpdate: any) {
+    // Ensure foodPackage is being sent and processed correctly
     console.log('Updating student details:', studentToUpdate.foodPackage);
     return this.httpClient.post<any>(`${this.apiUrl}updateStudent`, studentToUpdate).pipe(
       switchMap(({ msg }) => {
@@ -207,4 +211,5 @@ export class AdminService {
       })
     );
   }
+
 }

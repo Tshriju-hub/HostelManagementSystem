@@ -1,4 +1,4 @@
-<div class="row" style="width: 100.80%;">
+]<div class="row" style="width: 100.80%;">
     <aside class="col-lg-3" style="width: 335px;"> 
         <admin-hostel-sidebar></admin-hostel-sidebar>
     </aside>
@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="card col-lg-12">
                     <div class="card-body">
-                        <table *ngIf="users.length" class="table-striped table-bordered col-md-12 text-center">
+                        <table *ngIf="users && users.length > 0" class="table-striped table-bordered col-md-12 text-center">
                             <thead style="background-color: #b2e0e2;">
                                 <tr>
                                     <th>No</th>
@@ -18,33 +18,27 @@
                                     <th>Email</th>
                                     <th>Phone No.</th>
                                     <th>Type</th>
-                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let user of users;let i = index">
-                                    <td>{{i + 1}}</td>
-                                    <td><img src="../../assets/img/profileImg/{{user.username}}.jpg" onerror="src='../../assets/img/profileImg/profilePic.jpg'" alt="image for this user" width="100px" height="100px"></td>
-                                    <td>{{user.username}}</td>
+                                <tr *ngFor="let user of users; let i = index">
+                                    <td>{{ i + 1 }}</td>
+                                    <td><img src="../../assets/img/profileImg/{{ user.username }}.jpg" onerror="this.src='../../assets/img/profileImg/profilePic.jpg'" alt="Profile Pic" width="100px" height="100px"></td>
+                                    <td>{{ user.username }}</td>
                                     <td>
-                                        <p>First Name : <b>{{user.firstName}}</b></p>
-                                        <p>Last Name : <b>{{user.lastName}}</b></p>
+                                        <p>First Name : <b>{{ user.firstName }}</b></p>
+                                        <p>Last Name : <b>{{ user.lastName }}</b></p>
                                     </td>
-                                    <td>{{user.email}}</td>
-                                    <td>{{user.mobileNumber}}</td>
-                                    <td>{{user.role}}</td>
-                                    <td>
-                                        <button name="removeUser" class="btn btn-sm btn-danger" style="margin-left:9px;">Delete</button>
-                                    </td>
+                                    <td>{{ user.email }}</td>
+                                    <td>{{ user.mobileNumber }}</td>
+                                    <td>{{ user.role }}</td>
                                 </tr>
                             </tbody>
                         </table>
+                        <div *ngIf="users && users.length === 0" class="text-center">No users found.</div>
                     </div>
                 </div>
             </div>
         </div>
-     
-
     </main>
 </div>
-
